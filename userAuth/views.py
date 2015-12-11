@@ -8,8 +8,12 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.context_processors import csrf # for Cross Site Request Forgery.
 from userAuth.models import add_user_book
 from userAuth.models import userProfile
-from userAuth.models import add_profile_pic, create_profile
+from userAuth.models import add_profile_pic, create_profile, add_bad_word
 from books.models import book
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+import json
+
 
 def renderProfile(request):
 	return render_to_response("userAuth/profile.html")
@@ -112,13 +116,12 @@ def user_logout(request):
 	# Take the user back to the homepage.
 	return HttpResponseRedirect('/')
 
+@csrf_exempt	
 def addPic(request):
 	user = request.user
 	picture = request.FILES['picture']
-	c_srf = {'user': user}
-	c_srf.update(csrf(request))
 	add_profile_pic(user, picture)
-	return HttpResponseRedirect('/')
+	return HttpResponse()
 
 def addBook(request):
 
@@ -132,17 +135,16 @@ def addBook(request):
 	bDescription = str(request.POST.get('description'))
 	bGenre = str(request.POST.get('genre'))
 	add_user_book(user, bCover, bTitle, bPoints, bAuthor, bDescription, bGenre)
-	#add_user_book( bTitle, bAuthor, bDescription, bGenre)
 	
 	return HttpResponseRedirect('/bookshelf/')
-	# TODO:
-	# generate book id 
-	# models class add_user_book 
-	
 
+@csrf_exempt	
+def badWord(request):
+	user = request.user
+	badWord = str(request.POST.get('badword'))
+	add_bad_word(user, badWord)
+	jsonObj = {}
+	jsonObj['\'user\''] = user.username
+	jsonObj['\'badWord\''] = badWord
+	return JsonResponse(jsonObj)	
 
-
-#TODO:
-#get_booksuploaded
-#get_review written
-#get_points

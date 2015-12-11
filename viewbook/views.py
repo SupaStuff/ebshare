@@ -111,9 +111,9 @@ def add_review(request,book_id):
 	c = RequestContext(request)
 	book_selected = book.objects.get(pk=book_id)
 	rev = review(user=request.user,book_review=book_selected,content=request.POST['review'])
-        rev.save()
-        jsonObj = {}
-        jsonObj['\'user\''] = rev.user.username
-        jsonObj['\'content\''] = rev.content
-        return JsonResponse(jsonObj)
-        #return HttpResponse(json.dumps(jsonObj), content_type="application/json")
+	rev.save()
+	jsonObj = {}
+	jsonObj['\'user\''] = rev.user.username
+	jsonObj['\'content\''] = rev.content
+	return JsonResponse(jsonObj)
+    #return HttpResponse(json.dumps(jsonObj), content_type="application/json")

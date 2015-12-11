@@ -25,7 +25,7 @@
                 {% else %}
                 <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://site.steubenvilleconferences.com/assets/images/no-image.png" class="img-circle img-responsive"> </div>            
                 {% endif %}   
-                <form action={% url "userAuth.views.addPic"%} method="POST" enctype="multipart/form-data" data-ajax="false">        
+                <form action={% url "userAuth.views.addPic"%} method="POST" enctype="multipart/form-data" data-ajax="false" name="addpic" id="addpic">        
                 {% csrf_token %}
 	                <div class="form-group">
 	                  <label for="exampleProfilePic">Upload Picture</label>
@@ -61,10 +61,10 @@
 						<tbody>
 							<tr>
 								<td>
-			                    <form action={% url "userAuth.views.addBook"%} method="POST" enctype="multipart/form-data" data-ajax="false">
+			                    <form action={% url "userAuth.views.badWord"%} method="POST" enctype="multipart/form-data" data-ajax="false" id="badword" name="badword">
 			                        <div class="form-group">
 			                          <label for="exampleInputBadWord">Bad Words</label>
-			                          <input type="text" class="form-control" name="badword" id="badword" placeholder="Shiz">
+			                          <input type="text" class="form-control" id="badword" placeholder="Shiz">
 			                        </div>                    	
 			                    </form>  									
 								</td>
@@ -141,4 +141,29 @@
         </div>
       </div>
     </div>
+
+<script>
+$('#badword').on('submit', function(e) {
+	e.preventDefault();
+	$.ajax({
+		url : $(this).attr('action') || window.location.pathname,
+            type: "POST",
+            data: $(this).serialize(),
+			success: function (data) {
+                //$("#comment_list").html(data);
+				//jsonObj = $.parseJSON(data);
+				//console.log(jsonObj);
+				//console.log(data);
+				//console.log(data.content);
+				window.location.reload();
+            },
+            error: function (jXHR, textStatus, errorThrown) {
+				console.log(jXHR);
+				console.log(textStatus)
+                alert(errorThrown);
+            }
+	});
+});
+
+</script>    
 {% endblock %}
