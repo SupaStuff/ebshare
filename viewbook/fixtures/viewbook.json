@@ -1,12 +1,1 @@
-[
-    {
-        "fields": {
-            "book": 7,
-            "time_left": 0,
-            "time_read": 0,
-            "user": 2
-        },
-        "model": "viewbook.reader",
-        "pk": 1
-    }
-]
+[]

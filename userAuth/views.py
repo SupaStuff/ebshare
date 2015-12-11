@@ -121,8 +121,8 @@ def addPic(request):
 	user = request.user
 	picture = request.FILES['picture']
 	add_profile_pic(user, picture)
-	return HttpResponse()
-
+        #return JsonResponse(request)
+        return HttpResponseRedirect('/userAuth/profile/')
 def addBook(request):
 
 	user = request.user
@@ -136,7 +136,7 @@ def addBook(request):
 	bGenre = str(request.POST.get('genre'))
 	add_user_book(user, bCover, bTitle, bPoints, bAuthor, bDescription, bGenre)
 	
-	return HttpResponseRedirect('/bookshelf/')
+        return HttpResponseRedirect('/userAuth/profile/')
 
 @csrf_exempt	
 def badWord(request):
