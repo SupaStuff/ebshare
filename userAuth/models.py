@@ -38,9 +38,7 @@ class userProfile(models.Model):
 class badWords(models.Model):
 	#Each user can have upto 3 bad words that they can search for in books
     user = models.ForeignKey(User, db_column='user')
-    badword1 = models.CharField(max_length=10)
-    badword2 = models.CharField(max_length=10)
-    badword3 = models.CharField(max_length=10)
+    badword = models.CharField(max_length=10)
 
     def __unicode__(self):
 		return self.badword
