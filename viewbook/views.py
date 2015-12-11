@@ -39,19 +39,22 @@ def renderviewbook(request, book_id):
         
         if r.count() > 0:
             c['time_left'] = r[0].time_left
+            c['time_read'] = r[0].time_read
         else:
             c['time_left'] = 0
+            c['time_read'] = 0
 
         #combine book details and related books into Context
-        c['book_title'] = b.book_title
-        c['book_author'] = b.book_author
-        c['book_cover'] = b.book_cover
-        c['book_points'] = b.book_points
-        c['alt_text'] = b.alt_text
-        c['description'] = b.description
-        c['details'] = b.details
+        c['book'] = b
+        #c['book_title'] = b.book_title
+        #c['book_author'] = b.book_author
+        #c['book_cover'] = b.book_cover
+        #c['book_points'] = b.book_points
+        #c['alt_text'] = b.alt_text
+        #c['description'] = b.description
+        #c['details'] = b.details
         c['related'] = related
-        c['id'] = book_id
+        #c['id'] = book_id
         c['reviews'] = revs
 
 	return render_to_response("viewbook/viewbook.html", c)
@@ -96,8 +99,9 @@ def updatetime(request, book_id, seconds):
         b = book.objects.get(pk=book_id)
         #created is required. Do not touch
         readerEntry, created = reader.objects.get_or_create(user=request.user, book=b)
-        readerEntry.time_left = seconds
-            
+        
+        readerEntry.time_read = F('time_read') + (F('time_left') - seconds)
+        readerEntry.time_left = seconds   
         readerEntry.save()
         
         return HTTPResponse('1')

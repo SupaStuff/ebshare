@@ -11,11 +11,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    {{book_title}}
-                    <h5><strong>Uploaded by: </strong>{{user}}</h5>
+                    {{book.book_title}}
+                    <h5><strong>Uploaded by: </strong>{{book.user}}</h5>
 
                     <small>
-                    {{book_author}}
+                    {{book.book_author}}
                     </small>
                 </h1>
             </div>
@@ -27,25 +27,25 @@
 
             <div class="col-md-8">
                 <!-- OOCnE.jpg -->
-                <img class="img-responsive" src="/{{book_cover.url}}" alt="something">
+                <img class="img-responsive" src="/{{book.book_cover.url}}" alt="something">
             </div>
 
             <div class="col-md-4">
                 <h3>Description</h3>
                 <p>
-                {{description}}
+                {{book.description}}
                 </p>
 
 				<h3>Read book:</h3>
-                {{details|safe}}
+                {{book.details|safe}}
 				{% if time_left > 0 %}
-					<a href={% url "viewbook.views.renderreader" id%}>Read {{book_title}}...</a>
+					<a href={% url "viewbook.views.renderreader" book.id%}>Read {{book.book_title}}...</a>
 				{% endif %}
 
 				<ul>
 				{% load tag_lib %}
 				{% for i in "012" %}
-				{% with pointspertime=forloop.counter0|ppt:book_points %}
+				{% with pointspertime=forloop.counter0|ppt:book.book_points %}
 				{% with secondsPurchaseable=forloop.counter0|secsP:10 %}
 				<li>
 					<button class="btn btn-default primary"
@@ -92,9 +92,9 @@
         <div class="row">
             <div class="col-lg-12 col-sm-6 text-center">
             <div class="well">
-                {% if user.is_authenticated %}
+				{% if time_read > 0 %}
                 <h4>Review this book</h4>
-                     <form class="form-inline" name="userReview" id="userReview" method="POST" action={% url "viewbook.views.add_review" id%}>
+                     <form class="form-inline" name="userReview" id="userReview" method="POST" action={% url "viewbook.views.add_review" book.id%}>
                         {% csrf_token %}               
 			            <div class="input-group col-sm-3 col-md-10">
 			                <input type="text" name="review" rows="2" id="userComment" class="form-control input-sm chat-input" placeholder="Write your message here..." />
@@ -121,11 +121,11 @@
 function addTime(secs, ppt){
 	//update reader table
 	$.ajax({
-		url: '{% url "viewbook.views.purchasebook" id 11 22 %}'.replace('11', ppt).replace('22', secs),
+		url: '{% url "viewbook.views.purchasebook" book.id 11 22 %}'.replace('11', ppt).replace('22', secs),
 		type: "POST",
 		async: false
 	});
-	window.location.assign('{% url "viewbook.views.renderreader" id %}');
+	window.location.assign('{% url "viewbook.views.renderreader" book.id %}');
 }
 //function addReview(){
 $('#userReview').on('submit', function(e) {
@@ -150,11 +150,11 @@ $('#userReview').on('submit', function(e) {
 	});
 });
 		/*
-		url: '{% url "viewbook.views.add_review" id %}',
+		url: '{ % url "viewbook.views.add_review" id %}',
 		type: "POST",
 		async: false		
 	});
-	window.location.assign('{% url "viewbook.views.renderviewbook" id %}');
+	window.location.assign('{ % url "viewbook.views.renderviewbook" id %}');
 }
 	 */
 
