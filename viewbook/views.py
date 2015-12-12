@@ -30,6 +30,12 @@ def renderviewbook(request, book_id):
         related = book.objects.filter(Q(book_author__contains=b.book_author) | Q(genre__contains=b.genre)).exclude(pk=book_id)
         # context = {'book': book_selected,'related':related}
         # return render(request, "viewbook/viewbook.html", context)
+        readers = reader.objects.filter(Q(book=b) & Q(rating__gt=0))
+
+        if b.time_read > 0:
+            c['rating'] = sum([readers[i].rating * readers[i].time_read for i in range(len(readers))]) / b.time_read
+        else:
+            c['rating'] = 'No'
         
         if request.user.is_authenticated():
             profile = userProfile.objects.get(user=request.user)
@@ -100,8 +106,11 @@ def updatetime(request, book_id, seconds):
         #created is required. Do not touch
         readerEntry, created = reader.objects.get_or_create(user=request.user, book=b)
         
-        readerEntry.time_read = F('time_read') + (F('time_left') - seconds)
-        readerEntry.time_left = seconds   
+        b.time_read = F('time_read') + seconds
+        b.save();
+
+        readerEntry.time_read = F('time_read') + seconds
+        readerEntry.time_left = F('time_left') - seconds   
         readerEntry.save()
         
         return HTTPResponse('1')
@@ -117,3 +126,15 @@ def add_review(request,book_id):
 	jsonObj['\'content\''] = rev.content
 	return JsonResponse(jsonObj)
     #return HttpResponse(json.dumps(jsonObj), content_type="application/json")
+
+
+@csrf_exempt
+def update_rating(request,book_id):
+	c = RequestContext(request)
+	book_selected = book.objects.get(pk=book_id)
+        r = reader.objects.get(book=book_selected, user=request.user)
+        r.rating = request.POST['rating']
+        r.save()
+	jsonObj = {}
+        jsonObj['rating'] = request.POST['rating']
+	return JsonResponse(jsonObj)

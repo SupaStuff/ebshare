@@ -46,16 +46,16 @@ window.onbeforeunload = function(){
 };
 
 function closeBook(){
-	updateTime();
+	//updateTime();
 	window.location.assign('{% url "viewbook.views.renderviewbook" id %}');
 }
 
 function updateTime(){
 	//update reader table
 	if (timer < 0) timer = 0;
-
+	timer = {{time_left}}-timer;
 	$.ajax({
-		url: '{% url "viewbook.views.updatetime" id 0 %}'.replace("0", timer),
+		url: '{% url "viewbook.views.updatetime" id 9999 %}'.replace("9999", timer),
 		type: "POST",
 		async: false
 	});

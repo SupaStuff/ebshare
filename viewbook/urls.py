@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^purchase/(?P<book_id>[0-9]+)/(?P<price>[0-9]+)/(?P<seconds>[0-9]+)$', views.purchasebook, name='purchase'),
     url(r'^update/(?P<book_id>[0-9]+)/(?P<seconds>[0-9]+)$', views.updatetime, name='update'),
     url(r'^(?P<book_id>[0-9]+)/add_review/$',views.add_review,name="add_review"),
+    url(r'^(?P<book_id>[0-9]+)/update_rating/$',views.update_rating,name="update_rating"),
 ]

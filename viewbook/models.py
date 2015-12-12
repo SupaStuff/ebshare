@@ -8,5 +8,6 @@ class reader(models.Model):
     book = models.ForeignKey(book, db_column='book_id')
     time_read = models.IntegerField(default=0)
     time_left = models.IntegerField(default=0)
+    rating = models.IntegerField(default=0)
     def __unicode__(self):
 		return self.time_read

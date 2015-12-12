@@ -1,1 +1,35 @@
-[]
+[
+    {
+        "fields": {
+            "book": 1,
+            "rating": 0,
+            "time_left": -6,
+            "time_read": 16,
+            "user": 1
+        },
+        "model": "viewbook.reader",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "book": 5,
+            "rating": 0,
+            "time_left": 72,
+            "time_read": 298,
+            "user": 1
+        },
+        "model": "viewbook.reader",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "book": 7,
+            "rating": 0,
+            "time_left": 4,
+            "time_read": 6,
+            "user": 1
+        },
+        "model": "viewbook.reader",
+        "pk": 3
+    }
+]

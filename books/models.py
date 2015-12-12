@@ -17,7 +17,7 @@ class book(models.Model):
     book_points = models.CharField(max_length=50, default='50')
     # User who uploaded it
     user = models.ForeignKey(User, db_column='user', default="DevTeam")#, blank=True, null=True,)
-
+    time_read = models.IntegerField(default=0)
     
     #ideally, these would 1 non-array field with the paragraph text
     #current error: "need more than 1 value to unpack"
