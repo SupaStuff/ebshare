@@ -32,8 +32,11 @@ def renderviewbook(request, book_id):
         # return render(request, "viewbook/viewbook.html", context)
         readers = reader.objects.filter(Q(book=b) & Q(rating__gt=0))
 
-        if b.time_read > 0:
-            c['rating'] = sum([readers[i].rating * readers[i].time_read for i in range(len(readers))]) / b.time_read
+        book_time = sum([readers[i].time_read for i in range(len(readers))])
+
+        if book_time > 0:
+            #this is the most pythonic statement in this entire project
+            c['rating'] = sum([readers[i].rating * readers[i].time_read for i in range(len(readers))]) / book_time
         else:
             c['rating'] = 'No'
         
