@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#edit apps to add apps that use their model.py
+
+rm db.sqlite3
+python manage.py makemigrations
+python manage.py migrate
