@@ -2,14 +2,14 @@
     {
         "fields": {
             "alt_text": "",
-            "book_author": "author",
-            "book_cover": "photos/title/martian.jpg",
-            "book_points": "50",
-            "book_title": "title",
-            "description": "dfjgv",
+            "book_author": "",
+            "book_cover": "photos/martian_xDI9aD0.jpg",
+            "book_points": "1",
+            "book_title": "",
+            "description": "",
             "details": "",
-            "genre": "genre",
-            "time_read": 16,
+            "genre": "",
+            "time_read": 311,
             "user": 1
         },
         "model": "books.book",
@@ -19,14 +19,14 @@
         "fields": {
             "alt_text": "",
             "book_author": "",
-            "book_cover": "photos/title/hungergames1.jpg",
+            "book_cover": "photos/bookthief.jpg",
             "book_points": "",
-            "book_title": "title",
+            "book_title": "",
             "description": "",
             "details": "",
             "genre": "",
             "time_read": 0,
-            "user": 1
+            "user": 2
         },
         "model": "books.book",
         "pk": 2
@@ -35,14 +35,14 @@
         "fields": {
             "alt_text": "",
             "book_author": "",
-            "book_cover": "photos/library.jpg",
+            "book_cover": "photos/OOCnE.jpg",
             "book_points": "",
             "book_title": "",
             "description": "",
             "details": "",
             "genre": "",
             "time_read": 0,
-            "user": 1
+            "user": 3
         },
         "model": "books.book",
         "pk": 3
@@ -51,64 +51,16 @@
         "fields": {
             "alt_text": "",
             "book_author": "",
-            "book_cover": "photos/martian.jpg",
+            "book_cover": "photos/bookfavicon_b8NdcQg.ico",
             "book_points": "",
             "book_title": "",
             "description": "",
             "details": "",
             "genre": "",
             "time_read": 0,
-            "user": 1
+            "user": 4
         },
         "model": "books.book",
         "pk": 4
-    },
-    {
-        "fields": {
-            "alt_text": "",
-            "book_author": "",
-            "book_cover": "photos/bookfavicon.ico",
-            "book_points": "1",
-            "book_title": "",
-            "description": "",
-            "details": "",
-            "genre": "",
-            "time_read": 283,
-            "user": 1
-        },
-        "model": "books.book",
-        "pk": 5
-    },
-    {
-        "fields": {
-            "alt_text": "",
-            "book_author": "",
-            "book_cover": "photos/bookfavicon_Wx2apjV.ico",
-            "book_points": "",
-            "book_title": "",
-            "description": "",
-            "details": "",
-            "genre": "",
-            "time_read": 0,
-            "user": 1
-        },
-        "model": "books.book",
-        "pk": 6
-    },
-    {
-        "fields": {
-            "alt_text": "",
-            "book_author": "",
-            "book_cover": "photos/ipadread.jpg",
-            "book_points": "1",
-            "book_title": "",
-            "description": "",
-            "details": "",
-            "genre": "",
-            "time_read": 6,
-            "user": 1
-        },
-        "model": "books.book",
-        "pk": 7
     }
 ]

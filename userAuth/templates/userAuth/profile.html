@@ -67,7 +67,7 @@
 									{% csrf_token %}
 			                        <div class="form-group">
 			                          <label for="exampleInputBadWord">Bad Words</label>
-			                          <input type="text" class="form-control" id="badword" placeholder="Shiz">
+			                          <input type="text" class="form-control" id="badword" name="badword" placeholder="Shiz">
 			                        </div>                    	
 			                    </form>  									
 								</td>
@@ -151,8 +151,8 @@ $('#badword').on('submit', function(e) {
 	$.ajax({
 			url : $(this).attr('action') || window.location.pathname,
             type: "POST",
-			processData: false,
-			contentType: false,
+			//processData: false,
+			//contentType: false,
             data: $(this).serialize(),
 			success: function (data) {
                 //$("#comment_list").html(data);

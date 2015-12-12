@@ -2,10 +2,35 @@
     {
         "fields": {
             "picture": "",
-            "points": 277,
-            "user": 1
+            "points": 0,
+            "user": 6
         },
         "model": "userAuth.userprofile",
         "pk": ""
+    },
+    {
+        "fields": {
+            "picture": "",
+            "points": 0,
+            "user": 7
+        },
+        "model": "userAuth.userprofile",
+        "pk": "m"
+    },
+    {
+        "fields": {
+            "badword": "None",
+            "user": 6
+        },
+        "model": "userAuth.badwords",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "badword": "None",
+            "user": 6
+        },
+        "model": "userAuth.badwords",
+        "pk": 2
     }
 ]

@@ -47,8 +47,7 @@ def create_profile(user):
     # profile, crprofile = userProfile.objects.get_or_create(user = user)
     # if crprofile:
     # 	profile.user = user
-    profile = userProfile()
-    profile.user = user
+    profile = userProfile(user=user, username=user.username)
     profile.save()
 
 def add_profile_pic(user, picture):

@@ -2,9 +2,9 @@
     {
         "fields": {
             "book": 1,
-            "rating": 0,
-            "time_left": -6,
-            "time_read": 16,
+            "rating": 5,
+            "time_left": 54,
+            "time_read": 36,
             "user": 1
         },
         "model": "viewbook.reader",
@@ -12,24 +12,35 @@
     },
     {
         "fields": {
-            "book": 5,
-            "rating": 0,
-            "time_left": 72,
-            "time_read": 298,
-            "user": 1
+            "book": 1,
+            "rating": 1,
+            "time_left": 7,
+            "time_read": 3,
+            "user": 2
         },
         "model": "viewbook.reader",
         "pk": 2
     },
     {
         "fields": {
-            "book": 7,
-            "rating": 0,
-            "time_left": 4,
-            "time_read": 6,
-            "user": 1
+            "book": 1,
+            "rating": 1,
+            "time_left": 78,
+            "time_read": 132,
+            "user": 3
         },
         "model": "viewbook.reader",
         "pk": 3
+    },
+    {
+        "fields": {
+            "book": 1,
+            "rating": 5,
+            "time_left": 0,
+            "time_read": 140,
+            "user": 4
+        },
+        "model": "viewbook.reader",
+        "pk": 4
     }
 ]
