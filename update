@@ -7,7 +7,7 @@ python manage.py makemigrations
 python manage.py migrate
 if [[ ( "$#" == 0 ) ]]
 then
-	./load $(cat apps)
+	./load db
 else
 	./load $@
 fi

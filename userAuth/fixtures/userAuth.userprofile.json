@@ -1,0 +1,11 @@
+[
+    {
+        "fields": {
+            "picture": "",
+            "points": 0,
+            "user": 1
+        },
+        "model": "userAuth.userprofile",
+        "pk": "test"
+    }
+]
