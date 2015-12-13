@@ -41,9 +41,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
+    'viewbook',
     'homePage',
     'books',
-    'viewbook',
     'userAuth',
 )
 
