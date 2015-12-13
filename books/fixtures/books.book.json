@@ -1,0 +1,18 @@
+[
+    {
+        "fields": {
+            "alt_text": "",
+            "book_author": "author",
+            "book_cover": "photos/title/martian_GDQb7KK.jpg",
+            "book_points": "50",
+            "book_title": "title",
+            "description": "wefrgbhn",
+            "details": "",
+            "genre": "genre",
+            "time_read": 5,
+            "user": 1
+        },
+        "model": "books.book",
+        "pk": 1
+    }
+]
