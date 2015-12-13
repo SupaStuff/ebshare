@@ -36,7 +36,7 @@
                 {% if time_read > 0 %}
                      <form class="form-inline" name="userRating" id="userRating" method="POST" action={% url "viewbook.views.update_rating" book.id%}>
                         {% csrf_token %}               
-			            <div class="input-group col-sm-3 col-md-10">
+			            <div class="input-group col-sm-10 col-md-10">
 			                <select name="rating" class="form-control input-sm chat-input">
  							    <option value="5">5</option>
  								<option value="4">4</option>
@@ -108,13 +108,13 @@
         <br>
         <!-- Users Reviews Row -->
         <div class="row">
-            <div class="col-lg-12 col-sm-6 text-center">
+            <div class="col-lg-12 col-sm-10 text-center">
             <div class="well">
 				{% if time_read > 0 %}
                 <h4>Review this book</h4>
                      <form class="form-inline" name="userReview" id="userReview" method="POST" action={% url "viewbook.views.add_review" book.id%}>
                         {% csrf_token %}               
-			            <div class="input-group col-sm-3 col-md-10">
+			            <div class="input-group col-sm-10 col-md-10 col-lg-10">
 			                <input type="text" name="review" rows="2" id="userComment" class="form-control input-sm chat-input" placeholder="Write your message here..." />
 			            </div>			                
 							<button type="submit" class="btn btn-primary">Add Review</button>
