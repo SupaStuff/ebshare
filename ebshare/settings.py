@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -26,7 +27,7 @@ SECRET_KEY = '+*)5y%pa9&y$2g^_9s!=#+%*sqx=6m8gtspga_h0h1t&3(ygew'
 DEBUG = True
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 DJANGO_SETTINGS_MODULE = 'ebshare.settings'
 
@@ -40,9 +41,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
+    'viewbook',
     'homePage',
     'books',
-    'viewbook',
     'userAuth',
 )
 
@@ -94,12 +95,12 @@ WSGI_APPLICATION = 'ebshare.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 # Internationalization
@@ -114,22 +115,41 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+ON_HEROKU = os.environ.get('ON_HEROKU')
+HEROKU_SERVER = os.environ.get('HEROKU_SERVER')
 
+if ON_HEROKU:
+    DATABASE_URL = 'postgresql://postgresql'
+else:
+    DATABASE_URL = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+
+DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
+
+# Enable Connection Pooling (if desired)
+# DATABASES['default']['ENGINE'] = 'django_postgrespool'
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
-
+STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-    'ebshare/static/',
-    '', # add root path.
+    os.path.join(BASE_DIR, "ebshare/static"),
 )
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 FIXTURE_DIRS = (
    'ebshare/fixtures/',
 )
+
 MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
 
 MEDIA_URL = 'media/'
