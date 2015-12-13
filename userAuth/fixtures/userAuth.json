@@ -2,10 +2,19 @@
     {
         "fields": {
             "picture": "",
-            "points": 49,
+            "points": 37,
             "user": 1
         },
         "model": "userAuth.userprofile",
         "pk": "t"
+    },
+    {
+        "fields": {
+            "picture": "",
+            "points": 45,
+            "user": 2
+        },
+        "model": "userAuth.userprofile",
+        "pk": "w"
     }
 ]

@@ -9,10 +9,26 @@
             "description": "",
             "details": "",
             "genre": "",
-            "time_read": 17,
+            "time_read": 158,
             "user": 1
         },
         "model": "books.book",
         "pk": 1
+    },
+    {
+        "fields": {
+            "alt_text": "",
+            "book_author": "",
+            "book_cover": "photos/hungergames1.jpg",
+            "book_points": "",
+            "book_title": "",
+            "description": "",
+            "details": "",
+            "genre": "",
+            "time_read": 0,
+            "user": 2
+        },
+        "model": "books.book",
+        "pk": 2
     }
 ]

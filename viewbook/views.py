@@ -141,3 +141,16 @@ def update_rating(request,book_id):
 	jsonObj = {}
         jsonObj['rating'] = request.POST['rating']
 	return JsonResponse(jsonObj)
+
+#@csrf_exempt
+#def search_curses(request,book_id):
+#	c = RequestContext(request)
+#	book_selected = book.objects.get(pk=book_id)
+#        r = reader.objects.get(book=book_selected, user=request.user)
+#        r.rating = request.POST['rating']
+#        r.save()
+#	jsonObj = {}
+#        jsonObj['rating'] = request.POST['rating']
+#	return JsonResponse(jsonObj)
+
+
