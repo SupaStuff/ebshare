@@ -1,6 +1,7 @@
 #!/bin/bash
 apps=""
 django=$(cat django)
+dir=""
 
 if [[ ( "$#" == 0 ) ]]
 then
@@ -9,15 +10,23 @@ else
 	apps=$@
 fi
 
+apps=$(echo $apps $django | tr " " "\n" | sort | uniq -u)
+
+rm db.json
+python manage.py dumpdata --format=json | python -m json.tool > db.json
+
 for i in $apps
 do
-	mkdir -p $i/fixtures
+	dir=$(echo $i | cut -f 1 -d '.')
+	mkdir -p $dir/fixtures
 	echo "dumping $i.json"
-	python manage.py dumpdata --format=json $i | python -m json.tool > $i/fixtures/$i.json
+	python manage.py dumpdata --format=json $i | python -m json.tool > $dir/fixtures/$i.json
 done
 
 for i in $django
 do
-	mv $i/fixtures/$i.json $i.json
-	rm -r $i
+	echo "dumping $i.json"
+	python manage.py dumpdata --format=json $i | python -m json.tool > $i.json
+	#mv $i/fixtures/$i.json $i.json
+	#rm -r $i
 done

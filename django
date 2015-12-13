@@ -1,1 +1,4 @@
-auth
+contenttypes.contenttype
+sessions.session
+auth.permission
+auth.user

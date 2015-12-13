@@ -2,9 +2,12 @@
 apps=$(cat apps)
 django=$(cat django)
 
+apps=$(echo $apps $django | tr " " "\n" | sort | uniq -u)
+
 for i in $apps
 do
-	rm -r $i/fixtures/
+	dir=$(echo $i | cut -f 1 -d '.')
+	rm -r $dir/fixtures/
 done
 
 for i in $django

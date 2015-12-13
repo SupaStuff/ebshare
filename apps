@@ -1,1 +1,7 @@
-books userAuth auth viewbook
+contenttypes.contenttype
+sessions.session
+auth.permission
+auth.user
+books.book
+viewbook.reader
+userAuth.userprofile
