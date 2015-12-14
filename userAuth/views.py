@@ -21,6 +21,9 @@ def renderProfile(request):
 def renderSignin(request):
 	return render_to_response("userAuth/signin.html")
 
+def renderNotRegis(request):
+	return render_to_response("userAuth/notRegistered.html")
+
 def register(request):
 	context = RequestContext(request)
 
@@ -39,6 +42,7 @@ def register(request):
 			# Hash the password with the set_password method.
 			# Once hashed, we can update the user object.
 			user.set_password(user.password)
+			user.is_active = False
 			user.save()
 			# Now sort out the UserProfile instance.
 			create_profile(user)
@@ -83,7 +87,7 @@ def user_login(request):
 				return HttpResponseRedirect('/')
 			else:
 				# An inactive account was used - no logging in
-				return HttpResponse("Your account is disabled.")
+				return redirect('userAuth.views.renderNotRegis')
 		else:
 			# Bad login details were provided. Don't log the user in.
 			# TODO: create an html page to redirect to with a login fail message
@@ -147,5 +151,4 @@ def badWord(request):
 	jsonObj = {}
 	jsonObj['\'user\''] = user.username
 	jsonObj['\'badWord\''] = badWord
-	return JsonResponse(jsonObj)	
-
+	return JsonResponse(jsonObj)
