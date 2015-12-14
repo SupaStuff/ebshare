@@ -14,5 +14,6 @@ urlpatterns = [
     url(r'^(?P<book_id>[0-9]+)/search_curses/$',views.search_curses,name="search_curses"),
     url(r'^(?P<book_id>[0-9]+)/complain/$',views.complain,name="complain"),
     url(r'^(?P<book_id>[0-9]+)/sendinvite/$',views.sendInvite,name="sendinvite"),
+    url(r'^/acceptinvite/(?P<book_id>[0-9]+)/(?P<friend_id>[0-9]+)$',views.acceptinvite,name="acceptinvite"),
 
 ]

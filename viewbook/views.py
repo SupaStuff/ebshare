@@ -106,7 +106,7 @@ def purchase(user, book_id, price, seconds):
         readerEntry, created = reader.objects.get_or_create(user=user, book=b)
         readerEntry.time_left = F('time_left') + seconds
         readerEntry.save()
-        profile = userProfile.objects.get(user=request.user)
+        profile = userProfile.objects.get(user=user)
         profile.points = F('points') - price
         profile.save()
         
@@ -196,7 +196,7 @@ def sendInvite(request, book_id):
         #get book
         book_selected = book.objects.get(pk=book_id)
         #calculate the cost for the desired time
-        cost= math.floor(float(book_selected.book_points) * (1 + (math.sqrt(float(request.POST['time'])/10) * 1.5)))
+        cost= math.floor((float(book_selected.book_points) * (1 + (math.sqrt(float(request.POST['time'])/10) * 1.5))/2))
         #get friend
         to_usr = User.objects.filter(username=request.POST['buddy'])
 
@@ -209,13 +209,14 @@ def sendInvite(request, book_id):
                 #add cost and time to the invite and set return status to ok
                 inv.cost = cost
                 inv.time = request.POST['time']
+                inv.save()
                 ok=1
         else:
             ok=-1
         return HttpResponse(ok)
     
 
-def acceptInvite(request, book_id, friend_id):
+def acceptinvite(request, book_id, friend_id):
         #get invitation entry
         book_selected = book.objects.get(pk=book_id)
         from_usr = User.objects.get(pk=friend_id)

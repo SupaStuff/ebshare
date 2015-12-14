@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 from books.models import book
 from django.http import HttpResponseRedirect, HttpResponse
+from viewbook.models import invite
+from django.db.models import Q
+from django.template import RequestContext
 
 # Create your views here.
 
@@ -20,6 +23,11 @@ def index(request):
 def renderbookshelf(request):	
     return index(request)
 #	return render_to_response("books/bookshelf.html")
+
+def invites(request):
+    c = RequestContext(request)
+    c['invites'] = invite.objects.filter(Q(to_usr=request.user) & Q(pending=True))
+    return render_to_response("books/invites.html", c)
 
 def contribute_book(request):
 	if request.method == 'POST':
