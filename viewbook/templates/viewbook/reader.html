@@ -20,6 +20,7 @@
 				
                 <button class="btn btn-default primary" onclick="badWords()">Search for bad words...</button>
 				<button class="btn btn-default primary" onclick="closeBook()">Close book...</button>
+				<button class="btn btn-default primary" onclick="complain()">Report book...</button>
             </div>
         </div>
         <!-- /.row -->
@@ -86,6 +87,44 @@ window.onload = function () {
 	timer = {{time_left}};
 	startTimer(display);
 };
+
+function badWords(){
+	$.ajax({
+		url: '{% url "viewbook.views.search_curses" id %}',
+		type: "POST",
+		async: false,
+		success: function (data) {
+			alert("In this book there were " + data + "occurences of your bad words.");
+        },
+        error: function (jXHR, textStatus, errorThrown) {
+			console.log(jXHR);
+			console.log(textStatus)
+            alert(errorThrown);
+        }
+	});
+}
+
+function complain(){
+	$.ajax({
+		url: '{% url "viewbook.views.complain" id %}',
+		type: "POST",
+		async: false,
+		success: function (data) {
+			if(data == -1)
+				alert("You alraedy complained about this");
+			else
+			{
+				alert("The book was reported.");
+				closeBook();
+			}
+        },
+        error: function (jXHR, textStatus, errorThrown) {
+			console.log(jXHR);
+			console.log(textStatus)
+            alert(errorThrown);
+        }
+	});
+}
 
 </script>
 {% endblock %}

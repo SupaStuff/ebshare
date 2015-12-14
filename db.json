@@ -49,8 +49,8 @@
     },
     {
         "fields": {
-            "app_label": "books",
-            "model": "book"
+            "app_label": "viewbook",
+            "model": "reader"
         },
         "model": "contenttypes.contenttype",
         "pk": 7
@@ -58,15 +58,15 @@
     {
         "fields": {
             "app_label": "books",
-            "model": "review"
+            "model": "book"
         },
         "model": "contenttypes.contenttype",
         "pk": 8
     },
     {
         "fields": {
-            "app_label": "viewbook",
-            "model": "reader"
+            "app_label": "books",
+            "model": "review"
         },
         "model": "contenttypes.contenttype",
         "pk": 9
@@ -89,11 +89,19 @@
     },
     {
         "fields": {
-            "expire_date": "2015-12-26T06:04:46.644Z",
-            "session_data": "MGVjNDBkMTQxY2I3YjMwNDljYzk3ODVhOWVkNWYwOGZkMTVlZWY2MDp7Il9hdXRoX3VzZXJfaGFzaCI6ImZkN2E3OTA0NDgxZDA4ZDgwMWRmMmNmODM2ZDcyMWVlMGRhYWE5YWUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+            "expire_date": "2015-12-28T01:38:51.516Z",
+            "session_data": "NGRiNjFmN2U4OTM0YTg1MTgxNWZjY2E0NDE3ZTBkNWI0Zjg0Yjg0Mjp7Il9hdXRoX3VzZXJfaGFzaCI6IjZiNDJkMzRjNWFmZjQ4N2I0YWM5MGRkNjhlYWJiN2Y1MGZkMGJhMWMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
         },
         "model": "sessions.session",
-        "pk": "iwls4ga29mqgrp87ypn0hnsie1xtspdb"
+        "pk": "ahevrexhi6110kl6endj9l4m999n5sz3"
+    },
+    {
+        "fields": {
+            "expire_date": "2015-12-28T01:23:45.821Z",
+            "session_data": "OWJiNjlkZGQ2YjZiMjQzZjcwYzU0ZjQ2MjI0M2MzNjA3YzRjYTE4Njp7Il9hdXRoX3VzZXJfaGFzaCI6ImNlODBiNDQxNjE3YjI0YzY1ZjQ5ZmU5Nzg0YTk4ZjA3MzRhODQ0NjMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIzIn0="
+        },
+        "model": "sessions.session",
+        "pk": "qobqyu5as90nvn1krmeo0nahgwfptt2q"
     },
     {
         "fields": {
@@ -259,81 +267,81 @@
     },
     {
         "fields": {
-            "codename": "add_book",
+            "codename": "add_reader",
             "content_type": 7,
-            "name": "Can add book"
+            "name": "Can add reader"
         },
         "model": "auth.permission",
         "pk": 19
     },
     {
         "fields": {
-            "codename": "change_book",
+            "codename": "change_reader",
             "content_type": 7,
-            "name": "Can change book"
+            "name": "Can change reader"
         },
         "model": "auth.permission",
         "pk": 20
     },
     {
         "fields": {
-            "codename": "delete_book",
+            "codename": "delete_reader",
             "content_type": 7,
-            "name": "Can delete book"
+            "name": "Can delete reader"
         },
         "model": "auth.permission",
         "pk": 21
     },
     {
         "fields": {
-            "codename": "add_review",
+            "codename": "add_book",
             "content_type": 8,
-            "name": "Can add review"
+            "name": "Can add book"
         },
         "model": "auth.permission",
         "pk": 22
     },
     {
         "fields": {
-            "codename": "change_review",
+            "codename": "change_book",
             "content_type": 8,
-            "name": "Can change review"
+            "name": "Can change book"
         },
         "model": "auth.permission",
         "pk": 23
     },
     {
         "fields": {
-            "codename": "delete_review",
+            "codename": "delete_book",
             "content_type": 8,
-            "name": "Can delete review"
+            "name": "Can delete book"
         },
         "model": "auth.permission",
         "pk": 24
     },
     {
         "fields": {
-            "codename": "add_reader",
+            "codename": "add_review",
             "content_type": 9,
-            "name": "Can add reader"
+            "name": "Can add review"
         },
         "model": "auth.permission",
         "pk": 25
     },
     {
         "fields": {
-            "codename": "change_reader",
+            "codename": "change_review",
             "content_type": 9,
-            "name": "Can change reader"
+            "name": "Can change review"
         },
         "model": "auth.permission",
         "pk": 26
     },
     {
         "fields": {
-            "codename": "delete_reader",
+            "codename": "delete_review",
             "content_type": 9,
-            "name": "Can delete reader"
+            "name": "Can delete review"
         },
         "model": "auth.permission",
         "pk": 27
@@ -394,16 +402,16 @@
     },
     {
         "fields": {
-            "date_joined": "2015-12-12T05:57:34.709Z",
+            "date_joined": "2015-12-14T01:13:07.567Z",
             "email": "test2@uytf.com",
             "first_name": "",
             "groups": [],
             "is_active": true,
             "is_staff": false,
             "is_superuser": false,
-            "last_login": "2015-12-12T06:04:46.633Z",
+            "last_login": "2015-12-14T01:38:51.502Z",
             "last_name": "",
-            "password": "pbkdf2_sha256$20000$9GnN01zHLJ7b$SJEdVOvOsNUdnZU2LV2pMU3bJPOGEpxcpTWWEnLIcH4=",
+            "password": "pbkdf2_sha256$20000$3aSiMOj3clye$LHJHyjyLq4oQQAVCXOjyqZYFlpBHn3vdRUTC0OkNptM=",
             "user_permissions": [],
             "username": "t"
         },
@@ -412,60 +420,47 @@
     },
     {
         "fields": {
-            "date_joined": "2015-12-12T06:03:09.794Z",
-            "email": "w@w.com",
+            "date_joined": "2015-12-14T01:13:17.746Z",
+            "email": "usr@usr.com",
             "first_name": "",
             "groups": [],
             "is_active": true,
             "is_staff": false,
             "is_superuser": false,
-            "last_login": "2015-12-12T06:03:17.133Z",
+            "last_login": "2015-12-14T01:21:44.448Z",
             "last_name": "",
-            "password": "pbkdf2_sha256$20000$0APXLYv4XWLm$3/+PZwgd2jQelAr9FM9H4QRdhBpgu74rqA+KDoqKuO0=",
+            "password": "pbkdf2_sha256$20000$qR8qbnAGXogm$9dHdgVJKmu/hbhKCiBVcf7RlWFbEKLRv9NYmsESRKI0=",
             "user_permissions": [],
-            "username": "w"
+            "username": "u"
         },
         "model": "auth.user",
         "pk": 2
     },
     {
         "fields": {
-            "alt_text": "",
-            "book_author": "",
-            "book_cover": "photos/bookthief_HFoyZyo.jpg",
-            "book_points": "1",
-            "book_title": "",
-            "description": "",
-            "details": "",
-            "genre": "",
-            "time_read": 158,
-            "user": 1
+            "date_joined": "2015-12-14T01:13:29.704Z",
+            "email": "v@v.com",
+            "first_name": "",
+            "groups": [],
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "last_login": "2015-12-14T01:23:45.805Z",
+            "last_name": "",
+            "password": "pbkdf2_sha256$20000$8NoXOOsL1szI$ld0clGK3n7RNC9HLsJXmuejqd85n8ZQjz2iuCJ+z7yY=",
+            "user_permissions": [],
+            "username": "v"
         },
-        "model": "books.book",
-        "pk": 1
-    },
-    {
-        "fields": {
-            "alt_text": "",
-            "book_author": "",
-            "book_cover": "photos/hungergames1.jpg",
-            "book_points": "20",
-            "book_title": "",
-            "description": "",
-            "details": "",
-            "genre": "",
-            "time_read": 0,
-            "user": 2
-        },
-        "model": "books.book",
-        "pk": 2
+        "model": "auth.user",
+        "pk": 3
     },
     {
         "fields": {
             "book": 1,
+            "complained": false,
             "rating": 5,
-            "time_left": 159,
-            "time_read": 121,
+            "time_left": 6,
+            "time_read": 4,
             "user": 1
         },
         "model": "viewbook.reader",
@@ -474,9 +469,10 @@
     {
         "fields": {
             "book": 1,
+            "complained": false,
             "rating": 1,
-            "time_left": 63,
-            "time_read": 37,
+            "time_left": 72,
+            "time_read": 18,
             "user": 2
         },
         "model": "viewbook.reader",
@@ -484,8 +480,117 @@
     },
     {
         "fields": {
-            "picture": "",
-            "points": 37,
+            "book": 1,
+            "complained": false,
+            "rating": 0,
+            "time_left": 8,
+            "time_read": 2,
+            "user": 3
+        },
+        "model": "viewbook.reader",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "alt_text": "",
+            "blacklist": false,
+            "book_author": "author",
+            "book_cover": "photos/title/bookfavicon_YIETgEe.ico",
+            "book_points": "1",
+            "book_title": "title",
+            "complaints": 0,
+            "description": "hadouken",
+            "details": "",
+            "genre": "genre",
+            "user": 1
+        },
+        "model": "books.book",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "alt_text": "",
+            "blacklist": false,
+            "book_author": "some dude",
+            "book_cover": "photos/ipaddreams/ipadread_2ZllFAK.jpg",
+            "book_points": "80",
+            "book_title": "ipaddreams",
+            "complaints": 0,
+            "description": "jhugysd",
+            "details": "",
+            "genre": "fantasy",
+            "user": 2
+        },
+        "model": "books.book",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "alt_text": "",
+            "blacklist": false,
+            "book_author": "au",
+            "book_cover": "photos/lib/darkbook.jpg",
+            "book_points": "50",
+            "book_title": "lib",
+            "complaints": 0,
+            "description": "",
+            "details": "",
+            "genre": "fantasy",
+            "user": 3
+        },
+        "model": "books.book",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "alt_text": "",
+            "blacklist": false,
+            "book_author": "author",
+            "book_cover": "photos/booktheif/bookthief.jpg",
+            "book_points": "1",
+            "book_title": "booktheif",
+            "complaints": 0,
+            "description": "How to steal books.",
+            "details": "",
+            "genre": "edu",
+            "user": 1
+        },
+        "model": "books.book",
+        "pk": 4
+    },
+    {
+        "fields": {
+            "book_review": 1,
+            "content": "I uploaded this book. It's the bomb.",
+            "user": 1
+        },
+        "model": "books.review",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "book_review": 1,
+            "content": "",
+            "user": 2
+        },
+        "model": "books.review",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "book_review": 1,
+            "content": "This book sucks",
+            "user": 2
+        },
+        "model": "books.review",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "blacklist": false,
+            "picture": "photos/Melshaabiny_VExl7iy.jpg",
+            "points": 99,
+            "strikes": 0,
             "user": 1
         },
         "model": "userAuth.userprofile",
@@ -493,11 +598,40 @@
     },
     {
         "fields": {
+            "blacklist": false,
             "picture": "",
-            "points": 45,
+            "points": 46,
+            "strikes": 0,
             "user": 2
         },
         "model": "userAuth.userprofile",
-        "pk": "w"
+        "pk": "u"
+    },
+    {
+        "fields": {
+            "blacklist": false,
+            "picture": "",
+            "points": 49,
+            "strikes": 0,
+            "user": 3
+        },
+        "model": "userAuth.userprofile",
+        "pk": "v"
+    },
+    {
+        "fields": {
+            "badword": "badword1",
+            "user": 1
+        },
+        "model": "userAuth.badwords",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "badword": "badword2",
+            "user": 1
+        },
+        "model": "userAuth.badwords",
+        "pk": 2
     }
 ]

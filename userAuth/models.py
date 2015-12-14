@@ -17,6 +17,8 @@ class userProfile(models.Model):
 	username = models.CharField(max_length=50, primary_key=True)	
 	picture = models.ImageField(upload_to=get_image_path, blank=True, null=True)
 	points = models.IntegerField(default=0)
+        strikes = models.IntegerField(default=0)
+        blacklist = models.BooleanField(default=False)
 	# TODO:
 	# bio = 
 
@@ -64,7 +66,8 @@ def add_user_book(user, cover, title, points, author, description, genre):
 	Book = book()
 	Book.book_cover = cover
 	Book.book_title = title
-	Book.book_points = points
+        if points.isdigit():
+            Book.book_points = points
 	Book.book_author = author
 	Book.description = description
 	Book.genre = genre

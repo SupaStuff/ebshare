@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 # Create your views here.
 
 def index(request):
-    bookList = book.objects.all()
+    bookList = book.objects.all().exclude(blacklist=True)
     context = {'bookList': bookList}
     return render(request, "books/bookshelf.html", context)
 

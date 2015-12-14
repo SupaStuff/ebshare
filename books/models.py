@@ -14,10 +14,13 @@ class book(models.Model):
     description = models.CharField(max_length=750)
     details = models.CharField(max_length=400)
     genre = models.CharField(max_length=20)
-    book_points = models.CharField(max_length=50, default='50')
+    book_points = models.CharField(max_length=50, default="50")
     # User who uploaded it
     user = models.ForeignKey(User, db_column='user', default="DevTeam")#, blank=True, null=True,)
-    time_read = models.IntegerField(default=0)
+    complaints = models.IntegerField(default=0)
+    blacklist = models.BooleanField(default=False)
+
+    #time_read = models.IntegerField(default=0)
     
     #ideally, these would 1 non-array field with the paragraph text
     #current error: "need more than 1 value to unpack"

@@ -75,7 +75,8 @@ def user_login(request):
 		# If None, no user with matching credentials was found.
 		if user:
 			# If the account active? It could have been disabled.
-			if user.is_active:
+                        #profile = userProfile(user=user)
+			if user.is_active and (not userProfile.objects.get(user=user).blacklist):
 				# If the account is valid and active, we can log the user in (using Django machinery).
 				# We'll send the user back to the homepage.
 				login(request, user)

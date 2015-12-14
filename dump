@@ -20,7 +20,7 @@ do
 	dir=$(echo $i | cut -f 1 -d '.')
 	mkdir -p $dir/fixtures
 	echo "dumping $i.json"
-	python manage.py dumpdata --format=json $i | python -m json.tool > $dir/fixtures/$i.json
+	python manage.py dumpdata --format=json $i | python -m json.tool > $dir/fixtures/$(echo $i | cut -f 2 -d '.').json
 done
 
 for i in $django

@@ -4,6 +4,8 @@ django=$(cat django)
 
 apps=$(echo $apps $django | tr " " "\n" | sort | uniq -u)
 
+rm -r media
+
 for i in $apps
 do
 	dir=$(echo $i | cut -f 1 -d '.')

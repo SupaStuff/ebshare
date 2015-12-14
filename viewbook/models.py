@@ -9,5 +9,6 @@ class reader(models.Model):
     time_read = models.IntegerField(default=0)
     time_left = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
+    complained = models.BooleanField(default=False)
     def __unicode__(self):
 		return self.time_read

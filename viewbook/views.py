@@ -7,12 +7,14 @@ from django.db.models import F
 from books.models import book, review
 from viewbook.models import reader
 from userAuth.models import userProfile
+from userAuth.models import badWords
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 import json
+import string
 
 
 # Create your views here.
@@ -27,7 +29,7 @@ def renderviewbook(request, book_id):
             r = reader.objects.none()
         #get books with same genre or author
         #remove this one from list
-        related = book.objects.filter(Q(book_author__contains=b.book_author) | Q(genre__contains=b.genre)).exclude(pk=book_id)
+        related = book.objects.filter(Q(book_author__contains=b.book_author) | Q(genre__contains=b.genre)).exclude(blacklist=True).exclude(pk=book_id)
         # context = {'book': book_selected,'related':related}
         # return render(request, "viewbook/viewbook.html", context)
         readers = reader.objects.filter(Q(book=b) & Q(rating__gt=0))
@@ -142,15 +144,43 @@ def update_rating(request,book_id):
         jsonObj['rating'] = request.POST['rating']
 	return JsonResponse(jsonObj)
 
-#@csrf_exempt
-#def search_curses(request,book_id):
-#	c = RequestContext(request)
-#	book_selected = book.objects.get(pk=book_id)
-#        r = reader.objects.get(book=book_selected, user=request.user)
-#        r.rating = request.POST['rating']
-#        r.save()
-#	jsonObj = {}
-#        jsonObj['rating'] = request.POST['rating']
-#	return JsonResponse(jsonObj)
+@csrf_exempt
+def search_curses(request,book_id):
+        curses = 0;
+	#c = RequestContext(request)
+	book_selected = book.objects.get(pk=book_id)
+        user = request.user
+        for word in book_selected.description.split():
+            badword = word.encode('ascii','ignore').translate(string.maketrans("",""), string.punctuation)
+            if badWords.objects.filter(Q(user=user) & Q(badword__iexact=badword)).count() > 0:
+                curses+=1
+        return HttpResponse(curses)
 
+@csrf_exempt
+def complain(request,book_id):
+	#c = RequestContext(request)
+	book_selected = book.objects.get(pk=book_id)
+        user = request.user
+        response = 0
+        r = reader.objects.get(book=book_selected, user=request.user)
+        if not r.complained:
+            r.complained = True
+            r.save()
+            book_selected.complaints += 1
+            book_selected.save()
+            if book_selected.complaints >= 3:
+                blacklistBook(book_selected)
+        else:
+            response = -1
+         
+        return HttpResponse(response)
 
+def blacklistBook(book):
+        book.blacklist = True
+        profile = userProfile.objects.get(user=book.user)
+        profile.points = F('points') - 100
+        profile.strikes += 1
+        if profile.strikes >= 2:
+            profile.blacklist = True
+        profile.save()
+        book.save()
