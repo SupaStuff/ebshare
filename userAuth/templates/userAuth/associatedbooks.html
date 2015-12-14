@@ -1,0 +1,28 @@
+{% extends "ebshare/index.html" %}
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+	<div class="row">
+		<h3>Associated Books:</h3>
+		{% for b in bookList %}
+
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+			<h5>{{b.book_title}}</h5>
+			<a class="thumbnail" href={% url "viewbook.views.renderviewbook" b.id%}>
+				<img class="img-responsive portfolio-item" src="/{{b.book_cover.url}}" alt="{{b.alt_text}}"/>
+		    </a>
+		</div>
+		{% empty %}
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+		   	<a class="thumbnail" href="#">
+		    	<img class="img-responsive" src="http://placehold.it/400x300" alt="No books available">
+			</a>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}

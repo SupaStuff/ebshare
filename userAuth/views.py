@@ -24,6 +24,16 @@ def renderSignin(request):
 def renderNotRegis(request):
 	return render_to_response("userAuth/notRegistered.html")
 
+@login_required
+def renderAssociatedBooks(request):
+	context = RequestContext(request)
+	user = request.user
+	bookList = book.objects.filter(user=user).exclude(blacklist=True).exclude(approved=False)
+	profile = userProfile.objects.get(user=user) 
+	args = {'user': user, 'bookList': bookList, 'profile': profile}
+	args.update(csrf(request))
+	return render_to_response('userAuth/associatedbooks.html', args, context)
+
 def register(request):
 	context = RequestContext(request)
 
@@ -79,7 +89,7 @@ def user_login(request):
 		# If None, no user with matching credentials was found.
 		if user:
 			# If the account active? It could have been disabled.
-                        #profile = userProfile(user=user)
+						#profile = userProfile(user=user)
 			if user.is_active and (not userProfile.objects.get(user=user).blacklist):
 				# If the account is valid and active, we can log the user in (using Django machinery).
 				# We'll send the user back to the homepage.
@@ -104,13 +114,13 @@ def user_login(request):
 @login_required
 def user_profile(request):
 	
-    context = RequestContext(request)
-    user = request.user
-    bookList = book.objects.filter(user=user)
-    profile = userProfile.objects.get(user=user) 
-    args = {'user': user, 'bookList': bookList, 'profile': profile}
-    args.update(csrf(request))
-    return render_to_response('userAuth/profile.html', args, context)
+	context = RequestContext(request)
+	user = request.user
+	bookList = book.objects.filter(user=user)
+	profile = userProfile.objects.get(user=user) 
+	args = {'user': user, 'bookList': bookList, 'profile': profile}
+	args.update(csrf(request))
+	return render_to_response('userAuth/profile.html', args, context)
 
 
 @login_required
@@ -126,8 +136,9 @@ def addPic(request):
 	user = request.user
 	picture = request.FILES['picture']
 	add_profile_pic(user, picture)
-        #return JsonResponse(request)
-        return HttpResponseRedirect('/userAuth/profile/')
+		#return JsonResponse(request)
+	return HttpResponseRedirect('/userAuth/profile/')
+
 def addBook(request):
 
 	user = request.user
@@ -140,9 +151,10 @@ def addBook(request):
 	bDescription = str(request.POST.get('description'))
 	bGenre = str(request.POST.get('genre'))
 	bReqpoints = str(request.POST.get('reqpoints'))
-	add_user_book(user, bCover, bTitle, bPoints, bAuthor, bDescription, bGenre, bReqpoints)
+	book_text = request.FILES['text']
+	add_user_book(user, bCover, bTitle, bPoints, bAuthor, bDescription, bGenre, bReqpoints, book_text)
 	
-        return HttpResponseRedirect('/userAuth/profile/')
+	return HttpResponseRedirect('/userAuth/profile/')
 
 @csrf_exempt	
 def badWord(request):
