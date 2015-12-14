@@ -547,6 +547,8 @@
     {
         "fields": {
             "alt_text": "",
+            "approved": false,
+            "approvedpoints": 0,
             "blacklist": false,
             "book_author": "author",
             "book_cover": "photos/title/bookfavicon_YIETgEe.ico",
@@ -556,6 +558,7 @@
             "description": "hadouken",
             "details": "",
             "genre": "genre",
+            "reqpoints": 0,
             "user": 1
         },
         "model": "books.book",
@@ -564,6 +567,8 @@
     {
         "fields": {
             "alt_text": "",
+            "approved": false,
+            "approvedpoints": 0,
             "blacklist": false,
             "book_author": "some dude",
             "book_cover": "photos/ipaddreams/ipadread_2ZllFAK.jpg",
@@ -573,6 +578,7 @@
             "description": "jhugysd",
             "details": "",
             "genre": "fantasy",
+            "reqpoints": 0,
             "user": 2
         },
         "model": "books.book",
@@ -581,6 +587,8 @@
     {
         "fields": {
             "alt_text": "",
+            "approved": false,
+            "approvedpoints": 0,
             "blacklist": false,
             "book_author": "au",
             "book_cover": "photos/lib/darkbook.jpg",
@@ -590,6 +598,7 @@
             "description": "",
             "details": "",
             "genre": "fantasy",
+            "reqpoints": 0,
             "user": 3
         },
         "model": "books.book",
@@ -598,6 +607,8 @@
     {
         "fields": {
             "alt_text": "",
+            "approved": false,
+            "approvedpoints": 0,
             "blacklist": false,
             "book_author": "author",
             "book_cover": "photos/booktheif/bookthief.jpg",
@@ -607,6 +618,7 @@
             "description": "How to steal books.",
             "details": "",
             "genre": "edu",
+            "reqpoints": 0,
             "user": 1
         },
         "model": "books.book",
@@ -638,6 +650,39 @@
         },
         "model": "books.review",
         "pk": 3
+    },
+    {
+        "fields": {
+            "blacklist": false,
+            "picture": "",
+            "points": 0,
+            "strikes": 0,
+            "user": 6
+        },
+        "model": "userAuth.userprofile",
+        "pk": "Abhishek"
+    },
+    {
+        "fields": {
+            "blacklist": false,
+            "picture": "",
+            "points": 0,
+            "strikes": 0,
+            "user": 5
+        },
+        "model": "userAuth.userprofile",
+        "pk": "Moustafa"
+    },
+    {
+        "fields": {
+            "blacklist": false,
+            "picture": "",
+            "points": 0,
+            "strikes": 0,
+            "user": 4
+        },
+        "model": "userAuth.userprofile",
+        "pk": "stuff"
     },
     {
         "fields": {
