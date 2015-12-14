@@ -421,39 +421,315 @@
     },
     {
         "fields": {
-            "date_joined": "2015-12-14T16:44:33.754Z",
-            "email": "test2@uytf.com",
+            "date_joined": "2015-12-14T22:20:10Z",
+            "email": "stuff@stuff.com",
             "first_name": "",
             "groups": [],
-            "is_active": false,
+            "is_active": true,
             "is_staff": false,
             "is_superuser": false,
-            "last_login": null,
+            "last_login": "2015-12-14T22:31:07.153Z",
             "last_name": "",
-            "password": "pbkdf2_sha256$20000$P4hDkDKJVR5L$/lP0/QtlS9GdAcOMCt+w872WDJmvCrKhXMYpLA37B60=",
+            "password": "pbkdf2_sha256$20000$L8zBlcguCve8$U2zDFzC9WHUBtUmhKBTdExyepvT/2x/zFXT/vLlQxxU=",
             "user_permissions": [],
-            "username": "t"
+            "username": "jean"
         },
         "model": "auth.user",
         "pk": 1
     },
     {
         "fields": {
-            "date_joined": "2015-12-14T16:45:25.671Z",
+            "date_joined": "2015-12-14T22:20:34Z",
+            "email": "asd@tes.com",
+            "first_name": "",
+            "groups": [],
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "last_login": "2015-12-14T22:33:18.993Z",
+            "last_name": "",
+            "password": "pbkdf2_sha256$20000$uoAQkrs6OICt$vdJSZHkWQjKuTjHiJxHxh1HZoE1AcoxtAtEQ2y8tSRU=",
+            "user_permissions": [],
+            "username": "abhi"
+        },
+        "model": "auth.user",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "date_joined": "2015-12-14T22:20:52Z",
+            "email": "m@m.com",
+            "first_name": "",
+            "groups": [],
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "last_login": "2015-12-14T22:56:39.141Z",
+            "last_name": "",
+            "password": "pbkdf2_sha256$20000$3jBDe7KcVn6u$F3+oE1cQkpudwD4VufhCuJZu1qie7522X3/qH1s58GA=",
+            "user_permissions": [],
+            "username": "musta"
+        },
+        "model": "auth.user",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "date_joined": "2015-12-14T22:21:08Z",
+            "email": "w@w.com",
+            "first_name": "",
+            "groups": [],
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false,
+            "last_login": "2015-12-14T23:00:18.687Z",
+            "last_name": "",
+            "password": "pbkdf2_sha256$20000$BdJl9Z1UlVKR$syKKMJgWSFn+j86r5yFVqbL/dvtGPL5ApOClS+CkDLQ=",
+            "user_permissions": [],
+            "username": "wei"
+        },
+        "model": "auth.user",
+        "pk": 4
+    },
+    {
+        "fields": {
+            "date_joined": "2015-12-14T22:22:36.215Z",
             "email": "su@su.com",
             "first_name": "",
             "groups": [],
             "is_active": true,
             "is_staff": true,
             "is_superuser": true,
-            "last_login": null,
+            "last_login": "2015-12-14T22:39:50.255Z",
             "last_name": "",
-            "password": "pbkdf2_sha256$20000$jdOq88UCKhiW$eldRdi2lInoYSpSzpG+iUm7mTKQY9aLw/Sn5ArQt1Mc=",
+            "password": "pbkdf2_sha256$20000$HN72x0uczDIE$JJ6VzAnZe95ld4vAGCltX5kByU/ytPPPrk/km4QB5fI=",
             "user_permissions": [],
             "username": "su"
         },
         "model": "auth.user",
+        "pk": 5
+    },
+    {
+        "fields": {
+            "book": 1,
+            "complained": false,
+            "rating": 5,
+            "time_left": 7,
+            "time_read": 3,
+            "user": 3
+        },
+        "model": "viewbook.reader",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "book": 1,
+            "complained": false,
+            "rating": 1,
+            "time_left": 5,
+            "time_read": 5,
+            "user": 4
+        },
+        "model": "viewbook.reader",
         "pk": 2
+    },
+    {
+        "fields": {
+            "book": 5,
+            "complained": false,
+            "rating": 0,
+            "time_left": 0,
+            "time_read": 10,
+            "user": 4
+        },
+        "model": "viewbook.reader",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "book": 5,
+            "cost": 100,
+            "from_usr": 4,
+            "pending": true,
+            "time": 10,
+            "to_usr": 1
+        },
+        "model": "viewbook.invite",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "alt_text": "",
+            "approved": true,
+            "approvedpoints": 400,
+            "blacklist": false,
+            "book_author": "author",
+            "book_cover": "photos/The Book Theif/bookthief.jpg",
+            "book_points": "1",
+            "book_text": "booktext/TheBookTheif/sample.txt",
+            "book_title": "The Book Theif",
+            "complaints": 0,
+            "description": "How to steal books.",
+            "details": "",
+            "genre": "fantasy",
+            "reqpoints": 30,
+            "user": 3
+        },
+        "model": "books.book",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "alt_text": "",
+            "approved": true,
+            "approvedpoints": 400,
+            "blacklist": false,
+            "book_author": "some dude",
+            "book_cover": "photos/iPad Dreams/ipadread.jpg",
+            "book_points": "50",
+            "book_text": "booktext/iPadDreams/sample.txt",
+            "book_title": "iPad Dreams",
+            "complaints": 0,
+            "description": "I've always wanted an iPad...",
+            "details": "",
+            "genre": "fantasy",
+            "reqpoints": 30,
+            "user": 3
+        },
+        "model": "books.book",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "alt_text": "",
+            "approved": true,
+            "approvedpoints": 400,
+            "blacklist": false,
+            "book_author": "author",
+            "book_cover": "photos/real book/darkbook.jpg",
+            "book_points": "50",
+            "book_text": "booktext/realbook/sample.txt",
+            "book_title": "real book",
+            "complaints": 0,
+            "description": "This is what a book is like.",
+            "details": "",
+            "genre": "edu",
+            "reqpoints": 20,
+            "user": 1
+        },
+        "model": "books.book",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "alt_text": "",
+            "approved": true,
+            "approvedpoints": 400,
+            "blacklist": false,
+            "book_author": "some dude",
+            "book_cover": "photos/lib/library.jpg",
+            "book_points": "10",
+            "book_text": "booktext/lib/sample.txt",
+            "book_title": "lib",
+            "complaints": 0,
+            "description": "Libraries are the center of knowledge... and reusable code.",
+            "details": "",
+            "genre": "edu",
+            "reqpoints": 20,
+            "user": 2
+        },
+        "model": "books.book",
+        "pk": 4
+    },
+    {
+        "fields": {
+            "alt_text": "",
+            "approved": true,
+            "approvedpoints": 400,
+            "blacklist": false,
+            "book_author": "some dude",
+            "book_cover": "photos/Fav Book/bookfavicon.ico",
+            "book_points": "80",
+            "book_text": "booktext/FavBook/sample.txt",
+            "book_title": "Fav Book",
+            "complaints": 0,
+            "description": "This will be your favorite book too.",
+            "details": "",
+            "genre": "genre",
+            "reqpoints": 30,
+            "user": 4
+        },
+        "model": "books.book",
+        "pk": 5
+    },
+    {
+        "fields": {
+            "book_review": 1,
+            "content": "I",
+            "user": 3
+        },
+        "model": "books.review",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "book_review": 1,
+            "content": "I uploaded this book. It's the bomb.",
+            "user": 3
+        },
+        "model": "books.review",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "book_review": 1,
+            "content": "This book sucks",
+            "user": 4
+        },
+        "model": "books.review",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "book_review": 1,
+            "content": "This book sucks",
+            "user": 4
+        },
+        "model": "books.review",
+        "pk": 4
+    },
+    {
+        "fields": {
+            "blacklist": false,
+            "picture": "",
+            "points": 400,
+            "strikes": 0,
+            "user": 2
+        },
+        "model": "userAuth.userprofile",
+        "pk": "abhi"
+    },
+    {
+        "fields": {
+            "blacklist": false,
+            "picture": "",
+            "points": 400,
+            "strikes": 0,
+            "user": 1
+        },
+        "model": "userAuth.userprofile",
+        "pk": "jean"
+    },
+    {
+        "fields": {
+            "blacklist": false,
+            "picture": "photos/Melshaabiny.jpg",
+            "points": 1199,
+            "strikes": 0,
+            "user": 3
+        },
+        "model": "userAuth.userprofile",
+        "pk": "musta"
     },
     {
         "fields": {
@@ -461,9 +737,174 @@
             "picture": "",
             "points": 0,
             "strikes": 0,
-            "user": 1
+            "user": 5
         },
         "model": "userAuth.userprofile",
-        "pk": "t"
+        "pk": "su"
+    },
+    {
+        "fields": {
+            "blacklist": false,
+            "picture": "",
+            "points": 319,
+            "strikes": 0,
+            "user": 4
+        },
+        "model": "userAuth.userprofile",
+        "pk": "wei"
+    },
+    {
+        "fields": {
+            "badword": "leaned",
+            "user": 4
+        },
+        "model": "userAuth.badwords",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "badword": "lips",
+            "user": 4
+        },
+        "model": "userAuth.badwords",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "badword": "dusty",
+            "user": 4
+        },
+        "model": "userAuth.badwords",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2015-12-14T22:23:47.926Z",
+            "change_message": "Changed is_active.",
+            "content_type": 4,
+            "object_id": "4",
+            "object_repr": "wei",
+            "user": 5
+        },
+        "model": "admin.logentry",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2015-12-14T22:23:57.460Z",
+            "change_message": "Changed is_active.",
+            "content_type": 4,
+            "object_id": "3",
+            "object_repr": "musta",
+            "user": 5
+        },
+        "model": "admin.logentry",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2015-12-14T22:24:06.519Z",
+            "change_message": "Changed is_active.",
+            "content_type": 4,
+            "object_id": "1",
+            "object_repr": "jean",
+            "user": 5
+        },
+        "model": "admin.logentry",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2015-12-14T22:24:13.647Z",
+            "change_message": "Changed is_active.",
+            "content_type": 4,
+            "object_id": "2",
+            "object_repr": "abhi",
+            "user": 5
+        },
+        "model": "admin.logentry",
+        "pk": 4
+    },
+    {
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2015-12-14T22:40:01.577Z",
+            "change_message": "Changed approvedpoints.",
+            "content_type": 9,
+            "object_id": "5",
+            "object_repr": "Fav Book",
+            "user": 5
+        },
+        "model": "admin.logentry",
+        "pk": 5
+    },
+    {
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2015-12-14T22:40:09.014Z",
+            "change_message": "Changed approvedpoints.",
+            "content_type": 9,
+            "object_id": "4",
+            "object_repr": "lib",
+            "user": 5
+        },
+        "model": "admin.logentry",
+        "pk": 6
+    },
+    {
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2015-12-14T22:40:16.123Z",
+            "change_message": "Changed approvedpoints.",
+            "content_type": 9,
+            "object_id": "3",
+            "object_repr": "real book",
+            "user": 5
+        },
+        "model": "admin.logentry",
+        "pk": 7
+    },
+    {
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2015-12-14T22:40:24.672Z",
+            "change_message": "Changed approvedpoints.",
+            "content_type": 9,
+            "object_id": "2",
+            "object_repr": "iPad Dreams",
+            "user": 5
+        },
+        "model": "admin.logentry",
+        "pk": 8
+    },
+    {
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2015-12-14T22:40:33.131Z",
+            "change_message": "Changed approvedpoints.",
+            "content_type": 9,
+            "object_id": "1",
+            "object_repr": "The Book Theif",
+            "user": 5
+        },
+        "model": "admin.logentry",
+        "pk": 9
+    },
+    {
+        "fields": {
+            "action_flag": 2,
+            "action_time": "2015-12-14T22:40:33.189Z",
+            "change_message": "Changed approved.",
+            "content_type": 9,
+            "object_id": "1",
+            "object_repr": "The Book Theif",
+            "user": 5
+        },
+        "model": "admin.logentry",
+        "pk": 10
     }
 ]

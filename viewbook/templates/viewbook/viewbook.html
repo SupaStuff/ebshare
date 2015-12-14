@@ -103,7 +103,7 @@
 
             {% for b in related|slice:":4" %}
             <div class="col-sm-3 col-xs-6">
-                <a href={% url "viewbook.views.renderviewbook" b.id%}>                                  <img class="img-responsive portfolio-item" src="{% static b.cover %}" alt="{{b.alt_text}}"/>
+				<a href={% url "viewbook.views.renderviewbook" b.id%}>                                  <img class="img-responsive portfolio-item" src="/{{b.book_cover.url}}" alt="{{b.alt_text}}"/>
                 </a>
             </div>
             {% empty %}

@@ -18,6 +18,8 @@ from viewbook.models import invite
 import json
 import string
 import math
+import os.path
+
 
 # Create your views here.
 def renderviewbook(request, book_id):
@@ -79,7 +81,8 @@ def renderreader(request, book_id):
         #b = book.objects.get(pk=book_id)
         #get books with same genre or author
         #remove this one from list
-	
+        
+       
         #combine book details and related books into Context
         if r.count() > 0:
             c['time_left'] = r[0].time_left
