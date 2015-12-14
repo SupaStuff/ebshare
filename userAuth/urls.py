@@ -12,5 +12,4 @@ urlpatterns = [
     url(r'^badWord/$', views.badWord, name='badWord'),
 	url(r'^notRegistered/$', views.renderNotRegis, name='renderNotRegis'),
 	url(r'^associatedbooks/$', views.renderAssociatedBooks, name='associatedbooks'),
-
 ]
