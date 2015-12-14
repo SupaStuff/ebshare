@@ -57,8 +57,8 @@
     },
     {
         "fields": {
-            "app_label": "books",
-            "model": "book"
+            "app_label": "viewbook",
+            "model": "invite"
         },
         "model": "contenttypes.contenttype",
         "pk": 8
@@ -66,15 +66,15 @@
     {
         "fields": {
             "app_label": "books",
-            "model": "review"
+            "model": "book"
         },
         "model": "contenttypes.contenttype",
         "pk": 9
     },
     {
         "fields": {
-            "app_label": "userAuth",
-            "model": "userprofile"
+            "app_label": "books",
+            "model": "review"
         },
         "model": "contenttypes.contenttype",
         "pk": 10
@@ -82,26 +82,18 @@
     {
         "fields": {
             "app_label": "userAuth",
-            "model": "badwords"
+            "model": "userprofile"
         },
         "model": "contenttypes.contenttype",
         "pk": 11
     },
     {
         "fields": {
-            "expire_date": "2015-12-28T01:38:51.516Z",
-            "session_data": "NGRiNjFmN2U4OTM0YTg1MTgxNWZjY2E0NDE3ZTBkNWI0Zjg0Yjg0Mjp7Il9hdXRoX3VzZXJfaGFzaCI6IjZiNDJkMzRjNWFmZjQ4N2I0YWM5MGRkNjhlYWJiN2Y1MGZkMGJhMWMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+            "app_label": "userAuth",
+            "model": "badwords"
         },
-        "model": "sessions.session",
-        "pk": "ahevrexhi6110kl6endj9l4m999n5sz3"
-    },
-    {
-        "fields": {
-            "expire_date": "2015-12-28T01:23:45.821Z",
-            "session_data": "OWJiNjlkZGQ2YjZiMjQzZjcwYzU0ZjQ2MjI0M2MzNjA3YzRjYTE4Njp7Il9hdXRoX3VzZXJfaGFzaCI6ImNlODBiNDQxNjE3YjI0YzY1ZjQ5ZmU5Nzg0YTk4ZjA3MzRhODQ0NjMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIzIn0="
-        },
-        "model": "sessions.session",
-        "pk": "qobqyu5as90nvn1krmeo0nahgwfptt2q"
+        "model": "contenttypes.contenttype",
+        "pk": 12
     },
     {
         "fields": {
@@ -294,124 +286,151 @@
     },
     {
         "fields": {
-            "codename": "add_book",
+            "codename": "add_invite",
             "content_type": 8,
-            "name": "Can add book"
+            "name": "Can add invite"
         },
         "model": "auth.permission",
         "pk": 22
     },
     {
         "fields": {
-            "codename": "change_book",
+            "codename": "change_invite",
             "content_type": 8,
-            "name": "Can change book"
+            "name": "Can change invite"
         },
         "model": "auth.permission",
         "pk": 23
     },
     {
         "fields": {
-            "codename": "delete_book",
+            "codename": "delete_invite",
             "content_type": 8,
-            "name": "Can delete book"
+            "name": "Can delete invite"
         },
         "model": "auth.permission",
         "pk": 24
     },
     {
         "fields": {
-            "codename": "add_review",
+            "codename": "add_book",
             "content_type": 9,
-            "name": "Can add review"
+            "name": "Can add book"
         },
         "model": "auth.permission",
         "pk": 25
     },
     {
         "fields": {
-            "codename": "change_review",
+            "codename": "change_book",
             "content_type": 9,
-            "name": "Can change review"
+            "name": "Can change book"
         },
         "model": "auth.permission",
         "pk": 26
     },
     {
         "fields": {
-            "codename": "delete_review",
+            "codename": "delete_book",
             "content_type": 9,
-            "name": "Can delete review"
+            "name": "Can delete book"
         },
         "model": "auth.permission",
         "pk": 27
     },
     {
         "fields": {
-            "codename": "add_userprofile",
+            "codename": "add_review",
             "content_type": 10,
-            "name": "Can add user profile"
+            "name": "Can add review"
         },
         "model": "auth.permission",
         "pk": 28
     },
     {
         "fields": {
-            "codename": "change_userprofile",
+            "codename": "change_review",
             "content_type": 10,
-            "name": "Can change user profile"
+            "name": "Can change review"
         },
         "model": "auth.permission",
         "pk": 29
     },
     {
         "fields": {
-            "codename": "delete_userprofile",
+            "codename": "delete_review",
             "content_type": 10,
-            "name": "Can delete user profile"
+            "name": "Can delete review"
         },
         "model": "auth.permission",
         "pk": 30
     },
     {
         "fields": {
-            "codename": "add_badwords",
+            "codename": "add_userprofile",
             "content_type": 11,
-            "name": "Can add bad words"
+            "name": "Can add user profile"
         },
         "model": "auth.permission",
         "pk": 31
     },
     {
         "fields": {
-            "codename": "change_badwords",
+            "codename": "change_userprofile",
             "content_type": 11,
-            "name": "Can change bad words"
+            "name": "Can change user profile"
         },
         "model": "auth.permission",
         "pk": 32
     },
     {
         "fields": {
-            "codename": "delete_badwords",
+            "codename": "delete_userprofile",
             "content_type": 11,
-            "name": "Can delete bad words"
+            "name": "Can delete user profile"
         },
         "model": "auth.permission",
         "pk": 33
     },
     {
         "fields": {
-            "date_joined": "2015-12-14T01:13:07.567Z",
+            "codename": "add_badwords",
+            "content_type": 12,
+            "name": "Can add bad words"
+        },
+        "model": "auth.permission",
+        "pk": 34
+    },
+    {
+        "fields": {
+            "codename": "change_badwords",
+            "content_type": 12,
+            "name": "Can change bad words"
+        },
+        "model": "auth.permission",
+        "pk": 35
+    },
+    {
+        "fields": {
+            "codename": "delete_badwords",
+            "content_type": 12,
+            "name": "Can delete bad words"
+        },
+        "model": "auth.permission",
+        "pk": 36
+    },
+    {
+        "fields": {
+            "date_joined": "2015-12-14T16:44:33.754Z",
             "email": "test2@uytf.com",
             "first_name": "",
             "groups": [],
-            "is_active": true,
+            "is_active": false,
             "is_staff": false,
             "is_superuser": false,
-            "last_login": "2015-12-14T01:38:51.502Z",
+            "last_login": null,
             "last_name": "",
-            "password": "pbkdf2_sha256$20000$3aSiMOj3clye$LHJHyjyLq4oQQAVCXOjyqZYFlpBHn3vdRUTC0OkNptM=",
+            "password": "pbkdf2_sha256$20000$P4hDkDKJVR5L$/lP0/QtlS9GdAcOMCt+w872WDJmvCrKhXMYpLA37B60=",
             "user_permissions": [],
             "username": "t"
         },
@@ -420,44 +439,8 @@
     },
     {
         "fields": {
-            "date_joined": "2015-12-14T01:13:17.746Z",
-            "email": "usr@usr.com",
-            "first_name": "",
-            "groups": [],
-            "is_active": true,
-            "is_staff": false,
-            "is_superuser": false,
-            "last_login": "2015-12-14T01:21:44.448Z",
-            "last_name": "",
-            "password": "pbkdf2_sha256$20000$qR8qbnAGXogm$9dHdgVJKmu/hbhKCiBVcf7RlWFbEKLRv9NYmsESRKI0=",
-            "user_permissions": [],
-            "username": "u"
-        },
-        "model": "auth.user",
-        "pk": 2
-    },
-    {
-        "fields": {
-            "date_joined": "2015-12-14T01:13:29.704Z",
-            "email": "v@v.com",
-            "first_name": "",
-            "groups": [],
-            "is_active": true,
-            "is_staff": false,
-            "is_superuser": false,
-            "last_login": "2015-12-14T01:23:45.805Z",
-            "last_name": "",
-            "password": "pbkdf2_sha256$20000$8NoXOOsL1szI$ld0clGK3n7RNC9HLsJXmuejqd85n8ZQjz2iuCJ+z7yY=",
-            "user_permissions": [],
-            "username": "v"
-        },
-        "model": "auth.user",
-        "pk": 3
-    },
-    {
-        "fields": {
-            "date_joined": "2015-12-14T02:38:35.052Z",
-            "email": "stuff@stuff.com",
+            "date_joined": "2015-12-14T16:45:25.671Z",
+            "email": "su@su.com",
             "first_name": "",
             "groups": [],
             "is_active": true,
@@ -465,272 +448,22 @@
             "is_superuser": true,
             "last_login": null,
             "last_name": "",
-            "password": "pbkdf2_sha256$20000$hFN6tJ2OgnL3$PudGHd12Qj8UymVPFxDQepTvsHPKtufjT6R0f+sNMX4=",
+            "password": "pbkdf2_sha256$20000$jdOq88UCKhiW$eldRdi2lInoYSpSzpG+iUm7mTKQY9aLw/Sn5ArQt1Mc=",
             "user_permissions": [],
-            "username": "stuff"
+            "username": "su"
         },
         "model": "auth.user",
-        "pk": 4
-    },
-    {
-        "fields": {
-            "date_joined": "2015-12-14T02:39:02.047Z",
-            "email": "Moustafa@moustafa.com",
-            "first_name": "",
-            "groups": [],
-            "is_active": true,
-            "is_staff": true,
-            "is_superuser": true,
-            "last_login": null,
-            "last_name": "",
-            "password": "pbkdf2_sha256$20000$gm23kbqcJI08$6g+VFeJqA+dAyVhXqZ2DeFf0VRUvpGut+2JiD8kaOwQ=",
-            "user_permissions": [],
-            "username": "Moustafa"
-        },
-        "model": "auth.user",
-        "pk": 5
-    },
-    {
-        "fields": {
-            "date_joined": "2015-12-14T02:39:33.202Z",
-            "email": "Abhishek@abhishek.com",
-            "first_name": "",
-            "groups": [],
-            "is_active": true,
-            "is_staff": true,
-            "is_superuser": true,
-            "last_login": null,
-            "last_name": "",
-            "password": "pbkdf2_sha256$20000$dMTgT1d8O4ay$bCwQUiL49z5N8HkYORzugRBFeALtA6BcH60Na6PyyAY=",
-            "user_permissions": [],
-            "username": "Abhishek"
-        },
-        "model": "auth.user",
-        "pk": 6
-    },
-    {
-        "fields": {
-            "book": 1,
-            "complained": false,
-            "rating": 5,
-            "time_left": 6,
-            "time_read": 4,
-            "user": 1
-        },
-        "model": "viewbook.reader",
-        "pk": 1
-    },
-    {
-        "fields": {
-            "book": 1,
-            "complained": false,
-            "rating": 1,
-            "time_left": 72,
-            "time_read": 18,
-            "user": 2
-        },
-        "model": "viewbook.reader",
         "pk": 2
-    },
-    {
-        "fields": {
-            "book": 1,
-            "complained": false,
-            "rating": 0,
-            "time_left": 8,
-            "time_read": 2,
-            "user": 3
-        },
-        "model": "viewbook.reader",
-        "pk": 3
-    },
-    {
-        "fields": {
-            "alt_text": "",
-            "approved": false,
-            "approvedpoints": 0,
-            "blacklist": false,
-            "book_author": "author",
-            "book_cover": "photos/title/bookfavicon_YIETgEe.ico",
-            "book_points": "1",
-            "book_title": "title",
-            "complaints": 0,
-            "description": "hadouken",
-            "details": "",
-            "genre": "genre",
-            "reqpoints": 0,
-            "user": 1
-        },
-        "model": "books.book",
-        "pk": 1
-    },
-    {
-        "fields": {
-            "alt_text": "",
-            "approved": false,
-            "approvedpoints": 0,
-            "blacklist": false,
-            "book_author": "some dude",
-            "book_cover": "photos/ipaddreams/ipadread_2ZllFAK.jpg",
-            "book_points": "80",
-            "book_title": "ipaddreams",
-            "complaints": 0,
-            "description": "jhugysd",
-            "details": "",
-            "genre": "fantasy",
-            "reqpoints": 0,
-            "user": 2
-        },
-        "model": "books.book",
-        "pk": 2
-    },
-    {
-        "fields": {
-            "alt_text": "",
-            "approved": false,
-            "approvedpoints": 0,
-            "blacklist": false,
-            "book_author": "au",
-            "book_cover": "photos/lib/darkbook.jpg",
-            "book_points": "50",
-            "book_title": "lib",
-            "complaints": 0,
-            "description": "",
-            "details": "",
-            "genre": "fantasy",
-            "reqpoints": 0,
-            "user": 3
-        },
-        "model": "books.book",
-        "pk": 3
-    },
-    {
-        "fields": {
-            "alt_text": "",
-            "approved": false,
-            "approvedpoints": 0,
-            "blacklist": false,
-            "book_author": "author",
-            "book_cover": "photos/booktheif/bookthief.jpg",
-            "book_points": "1",
-            "book_title": "booktheif",
-            "complaints": 0,
-            "description": "How to steal books.",
-            "details": "",
-            "genre": "edu",
-            "reqpoints": 0,
-            "user": 1
-        },
-        "model": "books.book",
-        "pk": 4
-    },
-    {
-        "fields": {
-            "book_review": 1,
-            "content": "I uploaded this book. It's the bomb.",
-            "user": 1
-        },
-        "model": "books.review",
-        "pk": 1
-    },
-    {
-        "fields": {
-            "book_review": 1,
-            "content": "",
-            "user": 2
-        },
-        "model": "books.review",
-        "pk": 2
-    },
-    {
-        "fields": {
-            "book_review": 1,
-            "content": "This book sucks",
-            "user": 2
-        },
-        "model": "books.review",
-        "pk": 3
     },
     {
         "fields": {
             "blacklist": false,
             "picture": "",
             "points": 0,
-            "strikes": 0,
-            "user": 6
-        },
-        "model": "userAuth.userprofile",
-        "pk": "Abhishek"
-    },
-    {
-        "fields": {
-            "blacklist": false,
-            "picture": "",
-            "points": 0,
-            "strikes": 0,
-            "user": 5
-        },
-        "model": "userAuth.userprofile",
-        "pk": "Moustafa"
-    },
-    {
-        "fields": {
-            "blacklist": false,
-            "picture": "",
-            "points": 0,
-            "strikes": 0,
-            "user": 4
-        },
-        "model": "userAuth.userprofile",
-        "pk": "stuff"
-    },
-    {
-        "fields": {
-            "blacklist": false,
-            "picture": "photos/Melshaabiny_VExl7iy.jpg",
-            "points": 99,
             "strikes": 0,
             "user": 1
         },
         "model": "userAuth.userprofile",
         "pk": "t"
-    },
-    {
-        "fields": {
-            "blacklist": false,
-            "picture": "",
-            "points": 46,
-            "strikes": 0,
-            "user": 2
-        },
-        "model": "userAuth.userprofile",
-        "pk": "u"
-    },
-    {
-        "fields": {
-            "blacklist": false,
-            "picture": "",
-            "points": 49,
-            "strikes": 0,
-            "user": 3
-        },
-        "model": "userAuth.userprofile",
-        "pk": "v"
-    },
-    {
-        "fields": {
-            "badword": "badword1",
-            "user": 1
-        },
-        "model": "userAuth.badwords",
-        "pk": 1
-    },
-    {
-        "fields": {
-            "badword": "badword2",
-            "user": 1
-        },
-        "model": "userAuth.badwords",
-        "pk": 2
     }
 ]

@@ -13,9 +13,11 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
+from django.contrib.auth.models import User
+from viewbook.models import invite
 import json
 import string
-
+import math
 
 # Create your views here.
 def renderviewbook(request, book_id):
@@ -93,18 +95,21 @@ def renderreader(request, book_id):
 #This is a bad idea if we care about security, but it's all good in the hood.
 #It lets post requests happen without authentication.
 @csrf_exempt
-def purchasebook(request, book_id, price, seconds):
+def purchasebook(request, book_id, price, seconds):    
+        purchase(request.user, book_id, price, seconds)
+
+        return HTTPResponse('1')
+
+def purchase(user, book_id, price, seconds):
         b = book.objects.get(pk=book_id)
         #created is required. Do not touch
-        readerEntry, created = reader.objects.get_or_create(user=request.user, book=b)
+        readerEntry, created = reader.objects.get_or_create(user=user, book=b)
         readerEntry.time_left = F('time_left') + seconds
         readerEntry.save()
         profile = userProfile.objects.get(user=request.user)
         profile.points = F('points') - price
         profile.save()
         
-        return HTTPResponse('1')
-
 @csrf_exempt
 def updatetime(request, book_id, seconds):
         b = book.objects.get(pk=book_id)
@@ -184,3 +189,44 @@ def blacklistBook(book):
             profile.blacklist = True
         profile.save()
         book.save()
+
+def sendInvite(request, book_id):
+        #return status (assumes existing invite)
+        ok=0
+        #get book
+        book_selected = book.objects.get(pk=book_id)
+        #calculate the cost for the desired time
+        cost= math.floor(float(book_selected.book_points) * (1 + (math.sqrt(float(request.POST['time'])/10) * 1.5)))
+        #get friend
+        to_usr = User.objects.filter(username=request.POST['buddy'])
+
+        #if friend exists
+
+        if to_usr.count()>0:
+            #if invitation is not already pending, create it
+            inv, created = invite.objects.get_or_create(book=book_selected, to_usr=to_usr[0], from_usr=request.user, pending=True)
+            if created:
+                #add cost and time to the invite and set return status to ok
+                inv.cost = cost
+                inv.time = request.POST['time']
+                ok=1
+        else:
+            ok=-1
+        return HttpResponse(ok)
+    
+
+def acceptInvite(request, book_id, friend_id):
+        #get invitation entry
+        book_selected = book.objects.get(pk=book_id)
+        from_usr = User.objects.get(pk=friend_id)
+        inv = invite.objects.get(book=book_selected, to_usr=request.user, from_usr=from_usr, pending=True)
+        #reset pending flag and save
+        inv.pending=False
+        inv.save()
+
+        #purchase the book for inviter and invitee
+        purchase(from_usr, book_id, inv.cost, inv.time)
+        purchase(request.user, book_id, inv.cost, inv.time)
+
+        #load the book
+        return renderreader(request, book_id)

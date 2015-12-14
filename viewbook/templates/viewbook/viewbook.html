@@ -50,6 +50,16 @@
 			    {% else %}
                 <h1>:p</h1>			    
 			    {% endif %}
+				 	<form class="form-inline" name="inviteFriend" id="inviteFriend" method="POST" action={% url "viewbook.views.sendInvite" book.id%}>
+                        {% csrf_token %}               
+			            <div class="input-group col-sm-10 col-md-10">
+			                <input type="text" name="buddy" rows="2" id="buddy" class="form-control input-sm chat-input" placeholder="Enter Friend's name here" />
+			            </div>
+						<div class="input-group col-sm-10 col-md-10">
+			                <input type="text" name="time" rows="2" id="time" class="form-control input-sm chat-input" placeholder="Amount of time to purchase" />
+			            </div>	
+							<button type="submit" class="btn btn-primary">Send Invite</button>
+			         </form>
 				<p>
                 {{book.description}}
                 </p>
@@ -159,6 +169,25 @@ $('#userReview, #userRating').on('submit', function(e) {
 				//console.log(data);
 				//console.log(data.content);
 				window.location.reload();
+            },
+            error: function (jXHR, textStatus, errorThrown) {
+				console.log(jXHR);
+				console.log(textStatus)
+                alert(errorThrown);
+            }
+	});
+});
+
+$('#inviteFriend').on('submit', function(e) {
+	e.preventDefault();
+	$.ajax({
+		url : $(this).attr('action') || window.location.pathname,
+            type: "POST",
+            data: $(this).serialize(),
+			success: function (data) {
+                if(data == 0) alert("You already invited this user");
+                else if(data == 1) alert("Invitation sent");
+                else alert("Your friend does not exist");
             },
             error: function (jXHR, textStatus, errorThrown) {
 				console.log(jXHR);
