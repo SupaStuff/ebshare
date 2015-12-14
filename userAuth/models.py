@@ -59,9 +59,9 @@ def add_profile_pic(user, picture):
 
 def add_user_book(user, cover, title, points, author, description, genre, reqpoints):
 
-	userProf = userProfile.objects.get(user=user)
-        userProf.points = F('points') + 50
-	userProf.save()
+	#userProf = userProfile.objects.get(user=user)
+        #userProf.points = F('points') + 50
+	#userProf.save()
 
 	Book = book()
 	Book.book_cover = cover
