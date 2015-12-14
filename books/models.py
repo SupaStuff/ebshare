@@ -19,6 +19,8 @@ class book(models.Model):
     user = models.ForeignKey(User, db_column='user', default="DevTeam")#, blank=True, null=True,)
     complaints = models.IntegerField(default=0)
     blacklist = models.BooleanField(default=False)
+    reqpoints = models.IntegerField(default=0)
+    approvedpoints = models.IntegerField(default=0)
 
     #time_read = models.IntegerField(default=0)
     

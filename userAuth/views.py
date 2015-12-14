@@ -139,7 +139,8 @@ def addBook(request):
 	bAuthor = str(request.POST.get('author'))
 	bDescription = str(request.POST.get('description'))
 	bGenre = str(request.POST.get('genre'))
-	add_user_book(user, bCover, bTitle, bPoints, bAuthor, bDescription, bGenre)
+	bReqpoints = str(request.POST.get('reqpoints'))
+	add_user_book(user, bCover, bTitle, bPoints, bAuthor, bDescription, bGenre, bReqpoints)
 	
         return HttpResponseRedirect('/userAuth/profile/')
 
