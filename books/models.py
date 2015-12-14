@@ -28,7 +28,7 @@ class book(models.Model):
     #details = ArrayField(models.CharField(max_length=200))
 
     def __unicode__(self):
-		return self.book.book_title
+		return self.book_title
 
 class review(models.Model):
     user = models.ForeignKey(User)

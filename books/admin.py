@@ -1,13 +1,6 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from books.models import book, review
- 
- # Register your models here.
 
-class bookAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(book, bookAdmin)
-
-
-class reviewAdmin(admin.ModelAdmin):
-	pass
-admin.site.register(review, reviewAdmin) 
+admin.site.register(book)
+admin.site.register(review) 
