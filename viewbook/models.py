@@ -12,3 +12,13 @@ class reader(models.Model):
     complained = models.BooleanField(default=False)
     def __unicode__(self):
 		return self.time_read
+            
+class invite(models.Model):
+    to_usr = models.ForeignKey(User, related_name='to_usr')
+    from_usr = models.ForeignKey(User, related_name='from_usr')
+    book = models.ForeignKey(book, db_column='book_id')
+    pending = models.BooleanField(default=True)
+    time = models.IntegerField(default=10)
+    cost = models.IntegerField(default=50)
+    def __unicode__(self):
+		return self.time
