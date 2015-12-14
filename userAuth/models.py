@@ -57,7 +57,7 @@ def add_profile_pic(user, picture):
 	userProf.picture = picture
 	userProf.save()
 
-def add_user_book(user, cover, title, points, author, description, genre, reqpoints):
+def add_user_book(user, cover, title, points, author, description, genre, reqpoints, book_text):
 
 	#userProf = userProfile.objects.get(user=user)
         #userProf.points = F('points') + 50
@@ -66,6 +66,7 @@ def add_user_book(user, cover, title, points, author, description, genre, reqpoi
 	Book = book()
 	Book.book_cover = cover
 	Book.book_title = title
+	Book.book_text = book_text
         if points.isdigit():
             Book.book_points = points
         Book.reqpoints = reqpoints

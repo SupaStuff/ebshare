@@ -142,7 +142,12 @@ def addPic(request):
 def addBook(request):
 
 	user = request.user
-	bCover = request.FILES['cover'] 
+	for key in request.FILES:
+		if key == 'cover':
+			bCover = request.FILES[key] 
+		elif key == 'book_text':
+			book_text = request.FILES[key]
+
 	c_srf = {'user': user}
 	c_srf.update(csrf(request))
 	bTitle = str(request.POST.get('title'))
@@ -151,7 +156,6 @@ def addBook(request):
 	bDescription = str(request.POST.get('description'))
 	bGenre = str(request.POST.get('genre'))
 	bReqpoints = str(request.POST.get('reqpoints'))
-	book_text = request.FILES['text']
 	add_user_book(user, bCover, bTitle, bPoints, bAuthor, bDescription, bGenre, bReqpoints, book_text)
 	
 	return HttpResponseRedirect('/userAuth/profile/')
