@@ -29,7 +29,7 @@ def renderviewbook(request, book_id):
             r = reader.objects.none()
         #get books with same genre or author
         #remove this one from list
-        related = book.objects.filter(Q(book_author__contains=b.book_author) | Q(genre__contains=b.genre)).exclude(blacklist=True).exclude(pk=book_id)
+        related = book.objects.filter(Q(book_author__contains=b.book_author) | Q(genre__contains=b.genre)).exclude(blacklist=True).exclude(pk=book_id).exclude(approved=False)
         # context = {'book': book_selected,'related':related}
         # return render(request, "viewbook/viewbook.html", context)
         readers = reader.objects.filter(Q(book=b) & Q(rating__gt=0))

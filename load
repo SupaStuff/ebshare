@@ -5,3 +5,6 @@ do
 	python manage.py loaddata $i.json
 	echo "---------"
 done
+
+export DJANGO_SETTINGS_MODULE=ebshare.settings
+python su.py
