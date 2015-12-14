@@ -85,7 +85,9 @@ def renderreader(request, book_id):
             c['time_left'] = r[0].time_left
         else:
             c['time_left'] = 0
-        c['book_text'] = b.description
+        with open(b.book_text.url, 'r') as myfile:
+            data=myfile.read().replace('\n', '')
+        c['book_text'] = data
 
         
         c['id'] = book_id
@@ -155,7 +157,9 @@ def search_curses(request,book_id):
 	#c = RequestContext(request)
 	book_selected = book.objects.get(pk=book_id)
         user = request.user
-        for word in book_selected.description.split():
+        with open(book_selected.book_text.url, 'r') as myfile:
+            data=myfile.read().replace('\n', '')
+        for word in data.split():
             badword = word.encode('ascii','ignore').translate(string.maketrans("",""), string.punctuation)
             if badWords.objects.filter(Q(user=user) & Q(badword__iexact=badword)).count() > 0:
                 curses+=1
