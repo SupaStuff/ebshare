@@ -5,16 +5,20 @@ import os
 def get_image_path(instance, filename):
     return os.path.join('photos', str(instance.book_title), filename)
 
+def get_text_path(instance, filename):
+    return os.path.join('booktext', str(instance.book_title), filename)
+
 class book(models.Model):
     # Book Attributes
     book_title = models.CharField(max_length=20)
     book_author = models.CharField(max_length=60)
     book_cover = models.ImageField(upload_to=get_image_path, blank=True, null=True)
-    alt_text = models.CharField(max_length=20)
-    description = models.CharField(max_length=750)
-    details = models.CharField(max_length=400)
+    alt_text = models.CharField(max_length=20, blank=True)
+    description = models.CharField(max_length=750, blank=True)
+    details = models.CharField(max_length=400, blank=True)
     genre = models.CharField(max_length=20)
     book_points = models.CharField(max_length=50, default="50")
+    book_text = models.FileField(upload_to=get_text_path, blank=True, null=True)
     # User who uploaded it
     user = models.ForeignKey(User, db_column='user', default="DevTeam")#, blank=True, null=True,)
     complaints = models.IntegerField(default=0)

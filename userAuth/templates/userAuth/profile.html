@@ -39,8 +39,8 @@
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
-                        <td>Date of Birth</td>
-                        <td>01/24/1988</td>
+                        <td>Points</td>
+                        <td>{{profile.points}}</td>
                       </tr>
                    
                          <tr>
@@ -50,7 +50,7 @@
                       </tr>
                         <tr>
                         <td>Home Address</td>
-                        <td>Metro Manila,Philippines</td>
+                        <td>City College</td>
                       </tr>
                       <tr>
                         <td>Email</td>
@@ -74,7 +74,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<div class="row">
+					<!-- <div class="row">
 					<h3>Associated Books:</h3>
 					{% for b in bookList %}
 		    		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
@@ -90,20 +90,30 @@
 			                </a>
 			            </div>
 					{% endfor %}
-					</div>				                  
+					</div>				                   -->
+          <div class = "row" style = "width:100%">
+            <div class="btn-group btn-group-justified" style="margin: 0px 42% 15px;">
+              <span><a href="/userAuth/associatedbooks" class="btn btn-primary" style = "padding: 2%; margin-bottom: 5%">Associated Books</a></span>
+            </div>
+
                   <div class="panel panel-info">
                     <div class="panel-heading">
-                      <h3 class="panel-title">Upload books</h3>
+                      <h3 class="panel-title" style= "text-align:center">Upload books</h3>
                     </div>
                     <div class="panel-body">
                       <div class="row">
-                    <div class="col-md-6 col-lg-6 " align="center">
-                    <form action={% url "userAuth.views.addBook"%} method="POST" enctype="multipart/form-data" data-ajax="false">        
-                    {% csrf_token %}                                                    
+                    <div class="col-md-6 col-lg-6 " align="center" style = "width:100% !important">
+                    <form action={% url "userAuth.views.addBook"%} method="POST" enctype="multipart/form-data" data-ajax="false" id="uploadbook">
+                    {% csrf_token %}
                         <div class="form-group">
-                          <label for="exampleInputFile">Upload Book</label>
+                          <label for="exampleInputFile">Upload Cover of Book</label>
                           <p class="help-block">Please upload cover page</p>
-                          <input type="file" id="cover" name="cover">
+                          <input type="file" id="cover" name="cover" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputFile">Upload Book Text File</label>
+                          <p class="help-block">Please upload text file</p>
+                          <input type="file" id="book_text" name="book_text" accept="text/plain">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputTitle">Book title</label>
@@ -174,5 +184,5 @@ $('#badword').on('submit', function(e) {
 	});
 });
 
-</script>    
+</script>   
 {% endblock %}
