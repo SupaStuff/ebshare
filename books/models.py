@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.timezone import now
 import os
 
 def get_image_path(instance, filename):
@@ -19,6 +20,7 @@ class book(models.Model):
     genre = models.CharField(max_length=20)
     book_points = models.CharField(max_length=50, default="50")
     book_text = models.FileField(upload_to=get_text_path, blank=True, null=True)
+    last_opened = models.DateTimeField(now())
     # User who uploaded it
     user = models.ForeignKey(User, db_column='user', default="DevTeam")#, blank=True, null=True,)
     complaints = models.IntegerField(default=0)
