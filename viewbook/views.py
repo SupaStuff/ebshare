@@ -244,11 +244,17 @@ def weightedRating(book_id):
 
 @csrf_exempt
 def clean(request):
-    books = book.object.all()
+    books = book.objects.filter(approved=True)
     for b in books:
         #delta time
+        #dt=70
         dt = now() - b.last_opened
         #after 10 minutes of no reading, remove book from bookshelf
-        if dt.total_seconds() > 600:
+        if dt.total_seconds() > 240:
+        #if dt > 240:
             b.approved=False
+            user = userProfile.objects.get(user=b.user)
+            user.points = F('points') - 5
+            user.save()
+            b.save()
     return HttpResponse()
