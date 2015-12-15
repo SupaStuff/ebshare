@@ -105,13 +105,22 @@ function badWords(){
 }
 
 function complain(){
+	//processs complaint
 	$.ajax({
 		url: '{% url "viewbook.views.complain" id %}',
 		type: "POST",
 		async: false,
 		success: function (data) {
+			//if a complaint was made by this user, nothing happens
 			if(data == -1)
 				alert("You alraedy complained about this");
+			//if this was the 3rd complaint, this user is taken back to the bookshelf
+			else if(data ==1)
+			{
+				alert("The book was removed from the bookshelf");
+				window.location.assign('{% url "books.views.renderbookshelf" %}');
+			}
+			//if the complaint was just successful, the user is taken back to the book's preview page
 			else
 			{
 				alert("The book was reported.");

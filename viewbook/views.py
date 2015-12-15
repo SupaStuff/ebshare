@@ -158,28 +158,35 @@ def search_curses(request,book_id):
 
 @csrf_exempt
 def complain(request,book_id):
-	#c = RequestContext(request)
-	book_selected = book.objects.get(pk=book_id)
+	#get the book, the user, and the reader object to store the complaint in, and initialize response
+        book_selected = book.objects.get(pk=book_id)
         user = request.user
         response = 0
         r = reader.objects.get(book=book_selected, user=request.user)
+        #if the user has not complained yet, add to the book's complaints
         if not r.complained:
             r.complained = True
             r.save()
             book_selected.complaints += 1
             book_selected.save()
+            #if this is the 3rd or moreth complaint, blacklist the book
             if book_selected.complaints >= 3:
                 blacklistBook(book_selected)
+                response = 1
         else:
             response = -1
          
+        #return 0 for complaint processed, -1 for complaint was already there, and 1 for book removed
         return HttpResponse(response)
 
 def blacklistBook(book):
+        #blacklist the selected book
         book.blacklist = True
+        #get the uploader's profile and deduct 100 points and add 1 strike
         profile = userProfile.objects.get(user=book.user)
         profile.points = F('points') - 100
         profile.strikes += 1
+        #if there are 2 or more strikes, blacklist the user
         if profile.strikes >= 2:
             profile.blacklist = True
         profile.save()
@@ -229,11 +236,15 @@ def acceptinvite(request, book_id, friend_id):
 
 def weightedRating(book_id):
         #gets weighted rating
+        #get the book to search for all reader objects with a rating greater than 0
         book_selected = book.objects.get(pk=float(book_id))
         readers = reader.objects.filter(Q(book=book_selected) & Q(rating__gt=0))
 
+        #get the denominator for avg and initialize rating
         book_time = sum([readers[i].time_read for i in range(len(readers))])
         rating = 0
+        # denominator is not 0 compute the weighted rating.
+        # if book has not been rated, book_time would be 0
         if book_time > 0:
             #this is the most pythonic statement in this entire project
             rating = sum([readers[i].rating * readers[i].time_read for i in range(len(readers))]) / book_time
