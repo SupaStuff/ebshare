@@ -73,7 +73,10 @@ def renderreader(request, book_id):
             c['time_left'] = r[0].time_left
         else:
             c['time_left'] = 0
-        with open(STATIC_URL + b.book_text.url, 'r') as myfile:
+        #heroku might complain about the path, so we get an absolute path
+        DIR_T = os.path.abspath(os.path.dirname(__name__))
+        #open file in absolute path. replace %20 in string with a space...
+        with open(os.path.join(DIR_T, b.book_text.url).replace("%20", " "), 'r') as myfile:
             data=myfile.read().replace('\n', '')
         c['book_text'] = data
 
@@ -225,6 +228,7 @@ def acceptinvite(request, book_id, friend_id):
         return renderreader(request, book_id)
 
 def weightedRating(book_id):
+        #gets weighted rating
         book_selected = book.objects.get(pk=float(book_id))
         readers = reader.objects.filter(Q(book=book_selected) & Q(rating__gt=0))
 
@@ -240,14 +244,14 @@ def clean(request):
     books = book.objects.filter(approved=True)
     for b in books:
         #delta time
-        #dt=70
         dt = now() - b.last_opened
-        #after 10 minutes of no reading, remove book from bookshelf
+        #after 4 minutes of no reading, remove book from bookshelf
         if dt.total_seconds() > 240:
-        #if dt > 240:
             b.approved=False
+            #also deduct 5 points from user
             user = userProfile.objects.get(user=b.user)
             user.points = F('points') - 5
             user.save()
             b.save()
+    #no response necessary
     return HttpResponse()
