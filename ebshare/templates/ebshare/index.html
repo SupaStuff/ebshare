@@ -87,7 +87,13 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>
-
+	<script>
+	//On every page load, run this POST request
+	$.ajax({
+		url: '{% url "viewbook.views.clean"%}',
+		type: "POST",
+	});
+	</script>
 
   </body>
 </html>

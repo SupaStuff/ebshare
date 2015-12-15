@@ -240,3 +240,11 @@ def weightedRating(book_id):
             #this is the most pythonic statement in this entire project
             rating = sum([readers[i].rating * readers[i].time_read for i in range(len(readers))]) / book_time
         return rating
+
+@csrf_exempt
+def clean(request)
+    books = book.object.all()
+    for b in books
+        if Time() - b.last_read > 10:
+            b.approved=False
+    return HttpResponse()
