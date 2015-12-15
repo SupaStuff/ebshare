@@ -52,15 +52,7 @@ def renderviewbook(request, book_id):
 
         #combine book details and related books into Context
         c['book'] = b
-        #c['book_title'] = b.book_title
-        #c['book_author'] = b.book_author
-        #c['book_cover'] = b.book_cover
-        #c['book_points'] = b.book_points
-        #c['alt_text'] = b.alt_text
-        #c['description'] = b.description
-        #c['details'] = b.details
         c['related'] = related
-        #c['id'] = book_id
         c['reviews'] = revs
 
 	return render_to_response("viewbook/viewbook.html", c)
@@ -69,7 +61,8 @@ def renderreader(request, book_id):
         c = RequestContext(request);
         b = book.objects.get(pk=book_id)
         r = reader.objects.filter(Q(book=b) & Q(user=request.user))
-        b.update(last_opened=now())
+        b.last_opened=now()
+        b.save()
         #b = book.objects.get(pk=book_id)
         #get books with same genre or author
         #remove this one from list
@@ -80,7 +73,7 @@ def renderreader(request, book_id):
             c['time_left'] = r[0].time_left
         else:
             c['time_left'] = 0
-        with open(b.book_text.url, 'r') as myfile:
+        with open(STATIC_URL + b.book_text.url, 'r') as myfile:
             data=myfile.read().replace('\n', '')
         c['book_text'] = data
 
