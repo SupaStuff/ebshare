@@ -15,11 +15,11 @@ from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from viewbook.models import invite
+from django.utils.timezone import now
 import json
 import string
 import math
 import os.path
-
 
 # Create your views here.
 def renderviewbook(request, book_id):
@@ -69,6 +69,7 @@ def renderreader(request, book_id):
         c = RequestContext(request);
         b = book.objects.get(pk=book_id)
         r = reader.objects.filter(Q(book=b) & Q(user=request.user))
+        b.update(last_visit=now())
         #b = book.objects.get(pk=book_id)
         #get books with same genre or author
         #remove this one from list
@@ -231,7 +232,7 @@ def acceptinvite(request, book_id, friend_id):
         return renderreader(request, book_id)
 
 def weightedRating(book_id):
-        book_selected = book.objects.get(pk=float(book_id)<F5>)
+        book_selected = book.objects.get(pk=float(book_id))
         readers = reader.objects.filter(Q(book=book_selected) & Q(rating__gt=0))
 
         book_time = sum([readers[i].time_read for i in range(len(readers))])
