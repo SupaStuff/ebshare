@@ -573,6 +573,7 @@
             "details": "",
             "genre": "fantasy",
             "reqpoints": 30,
+			"last_opened": "2015-12-15T05:17:15Z",
             "user": 3
         },
         "model": "books.book",
@@ -594,6 +595,7 @@
             "details": "",
             "genre": "fantasy",
             "reqpoints": 30,
+			"last_opened": "2015-12-15T05:17:15Z",
             "user": 3
         },
         "model": "books.book",
@@ -615,6 +617,7 @@
             "details": "",
             "genre": "edu",
             "reqpoints": 20,
+			"last_opened": "2015-12-15T05:17:15Z",
             "user": 1
         },
         "model": "books.book",
@@ -636,6 +639,7 @@
             "details": "",
             "genre": "edu",
             "reqpoints": 20,
+			"last_opened": "2015-12-15T05:17:15Z",
             "user": 2
         },
         "model": "books.book",
@@ -657,6 +661,7 @@
             "details": "",
             "genre": "genre",
             "reqpoints": 30,
+			"last_opened": "2015-12-15T05:17:15Z",
             "user": 4
         },
         "model": "books.book",

@@ -69,7 +69,7 @@ def renderreader(request, book_id):
         c = RequestContext(request);
         b = book.objects.get(pk=book_id)
         r = reader.objects.filter(Q(book=b) & Q(user=request.user))
-        b.update(last_visit=now())
+        b.update(last_opened=now())
         #b = book.objects.get(pk=book_id)
         #get books with same genre or author
         #remove this one from list
@@ -243,9 +243,12 @@ def weightedRating(book_id):
         return rating
 
 @csrf_exempt
-def clean(request)
+def clean(request):
     books = book.object.all()
-    for b in books
-        if Time() - b.last_read > 10:
+    for b in books:
+        #delta time
+        dt = now() - b.last_opened
+        #after 10 minutes of no reading, remove book from bookshelf
+        if dt.total_seconds() > 600:
             b.approved=False
     return HttpResponse()

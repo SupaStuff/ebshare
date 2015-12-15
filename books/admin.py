@@ -12,6 +12,7 @@ class bookAdmin(admin.ModelAdmin):
         if change:
             if obj.reqpoints <= obj.approvedpoints:
                 obj.approved = True
+                obj.last_opened = now()
                 user = userProfile.objects.get(user=obj.user)
                 user.points += obj.approvedpoints
                 user.save()
