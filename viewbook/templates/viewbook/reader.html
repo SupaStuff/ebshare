@@ -14,10 +14,11 @@
 			<hr/>
             <div class="col-lg-12">
                 <h1 class="page-header">
+					<!-- display timer here -->
 					<small>Time left: </small>
 					<strong><span id="time"></span></strong>
                 </h1>
-				
+				<!-- some buttons for features -->
                 <button class="btn btn-default primary" onclick="badWords()">Search for bad words...</button>
 				<button class="btn btn-default primary" onclick="closeBook()">Close book...</button>
 				<button class="btn btn-default primary" onclick="complain()">Report book...</button>
@@ -30,6 +31,7 @@
 
             <div class="col-md-12">
                 <p>
+				<!-- displays book text here -->
                 {{book_text}}
                 </p>
             </div>
@@ -39,33 +41,42 @@
 
 </div>
 <script>
-
+//global timer variable!! D:<
 var timer;
 
 window.onbeforeunload = function(){
+	//before leaving the page, update the time left for the user to read the book
 	updateTime();
 };
 
 function closeBook(){
-	//updateTime();
+	//redirect to viewbook.html
 	window.location.assign('{% url "viewbook.views.renderviewbook" id %}');
 }
 
 function updateTime(){
 	//update reader table
-	if (timer < 0) timer = 0;
-	timer = {{time_left}}-timer;
+	//timer may go below 0...
+	var t_f = timer;
+	if (t_f < 0) t_f = 0;
+	//get time spent on this page
+	t_f = {{time_left}}-t_f;
 	$.ajax({
-		url: '{% url "viewbook.views.updatetime" id 9999 %}'.replace("9999", timer),
+		//run updatetime from viewbook/views.py
+		url: '{% url "viewbook.views.updatetime" id 9999 %}'.replace("9999", t_f),
 		type: "POST",
 		async: false
 	});
-
-	//$.post('{% url "viewbook.views.updatetime" id 0 %}'.replace("0", timer));
 }
 
 function startTimer(display) {
 	var minutes, seconds;
+	//every 1000 milliseconds, calculate the minutes and seconds left
+	//from the timer variable that is counting down seconds.
+	//The display is updated with display.textContext = ...
+	//finally, decrement. If timer is ever less than 0, alert the user and redirect
+	//them to the book's preview page where they can purchase more time
+	
     setInterval(function () {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
@@ -83,6 +94,7 @@ function startTimer(display) {
 }
 
 window.onload = function () {
+	//start the timer when this page loads
 	var display = document.querySelector('#time');
 	timer = {{time_left}};
 	startTimer(display);
@@ -90,13 +102,16 @@ window.onload = function () {
 
 function badWords(){
 	$.ajax({
+		//use the server's function to search for bad words
 		url: '{% url "viewbook.views.search_curses" id %}',
 		type: "POST",
 		async: false,
 		success: function (data) {
+			//if successful, display the number of bad words found.
 			alert("In this book there were " + data + "occurences of your bad words.");
         },
         error: function (jXHR, textStatus, errorThrown) {
+			//in casee an error happens. For debugging
 			console.log(jXHR);
 			console.log(textStatus)
             alert(errorThrown);
