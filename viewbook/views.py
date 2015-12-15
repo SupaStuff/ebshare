@@ -34,17 +34,8 @@ def renderviewbook(request, book_id):
         #get books with same genre or author
         #remove this one from list
         related = book.objects.filter(Q(book_author__contains=b.book_author) | Q(genre__contains=b.genre)).exclude(blacklist=True).exclude(pk=book_id).exclude(approved=False)
-        # context = {'book': book_selected,'related':related}
-        # return render(request, "viewbook/viewbook.html", context)
-        readers = reader.objects.filter(Q(book=b) & Q(rating__gt=0))
-
-        book_time = sum([readers[i].time_read for i in range(len(readers))])
-
-        if book_time > 0:
-            #this is the most pythonic statement in this entire project
-            c['rating'] = sum([readers[i].rating * readers[i].time_read for i in range(len(readers))]) / book_time
-        else:
-            c['rating'] = 'No'
+        
+        c['rating'] = weightedRating(book_id)
         
         if request.user.is_authenticated():
             profile = userProfile.objects.get(user=request.user)
@@ -238,3 +229,14 @@ def acceptinvite(request, book_id, friend_id):
 
         #load the book
         return renderreader(request, book_id)
+
+def weightedRating(book_id):
+        book_selected = book.objects.get(pk=float(book_id)<F5>)
+        readers = reader.objects.filter(Q(book=book_selected) & Q(rating__gt=0))
+
+        book_time = sum([readers[i].time_read for i in range(len(readers))])
+        rating = 0
+        if book_time > 0:
+            #this is the most pythonic statement in this entire project
+            rating = sum([readers[i].rating * readers[i].time_read for i in range(len(readers))]) / book_time
+        return rating
