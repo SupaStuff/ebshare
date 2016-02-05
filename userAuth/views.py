@@ -12,6 +12,7 @@ from userAuth.models import add_profile_pic, create_profile, add_bad_word
 from books.models import book
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+from django.db.models import F
 import json
 
 
@@ -52,7 +53,7 @@ def register(request):
 			# Hash the password with the set_password method.
 			# Once hashed, we can update the user object.
 			user.set_password(user.password)
-			user.is_active = False
+			user.is_active = True
 			user.save()
 			# Now sort out the UserProfile instance.
 			create_profile(user)
@@ -158,6 +159,10 @@ def addBook(request):
 	bReqpoints = str(request.POST.get('reqpoints'))
 	add_user_book(user, bCover, bTitle, bPoints, bAuthor, bDescription, bGenre, bReqpoints, book_text)
 	
+        profile = userProfile.objects.get(user=user)
+        profile.points = F('points') + bReqpoints
+        profile.save()
+
 	return HttpResponseRedirect('/userAuth/profile/')
 
 @csrf_exempt	
