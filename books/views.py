@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from viewbook.models import invite
 from django.db.models import Q
 from django.template import RequestContext
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -23,6 +24,15 @@ def index(request):
 def renderbookshelf(request):	
 	return index(request)
 #	return render_to_response("books/bookshelf.html")
+
+@csrf_exempt
+def rendersearch(request):
+        q = str(request.POST.get('q'))
+	bookList = book.objects.filter(Q(book_author__contains=q) | Q(genre__contains=q) |
+                Q(book_title__contains=q) | Q(details__contains=q) | Q(description__contains=q) |
+                Q(book_text__contains=q)).exclude(blacklist=True).exclude(approved=False)
+	context = {'bookList': bookList}
+        return render(request, "books/bookshelf.html", context)
 
 def invites(request):
     c = RequestContext(request)

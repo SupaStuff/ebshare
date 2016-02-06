@@ -62,7 +62,7 @@
                 {% endif %}                             
               </ul>
                 <div class="col-sm-3 col-md-6 pull-right">
-                    <form class="navbar-form" role="search">
+                    <form action={% url "books.views.rendersearch"%} method="POST" class="navbar-form" role="search">
                         <div class="input-group col-sm-3 col-md-5 pull-right">
                             <input type="text" class="form-control" placeholder="Search books" name="q">
                             <div class="input-group-btn">
@@ -88,11 +88,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>
 	<script>
-	//On every page load, run this POST request
-	$.ajax({
-		url: '{% url "viewbook.views.clean"%}',
-		type: "POST",
-	});
+	var debug = false;	
+	if(debug)
+	{
+		//On every page load, run this POST request
+		$.ajax({
+			url: '{% url "viewbook.views.clean"%}',
+			type: "POST",
+		});
+	}
 	</script>
 
   </body>
