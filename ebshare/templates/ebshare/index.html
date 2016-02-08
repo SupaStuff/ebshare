@@ -14,7 +14,8 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{% static "bootstrap/dist/css/bootstrap.min.css" %}" rel="stylesheet">
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    
 
 	<script src="{% static "js/jquery-1.11.3.min.js" %}"></script>
     <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
@@ -41,7 +42,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li><a href="#about">About</a></li>
+                <li><a href={% url "homePage.views.renderAbout" %}>About</a></li>
                 <li><a href={% url "books.views.renderbookshelf" %}>Book Shelf</a></li>
                 {% if user.is_authenticated %}
                 <li class="dropdown">
@@ -87,6 +88,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="{% static "bootstrap/dist/js/bootstrap.min.js" %}"></script>
+	<script src="{% static "cust.js" %}"></script>
 	<script>
 	var debug = false;	
 	if(debug)

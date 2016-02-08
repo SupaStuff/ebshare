@@ -26,3 +26,8 @@ def renderHome(request):
         # No context variables to pass to the template system, hence the 
 	# blank dictionary object
 	return render_to_response('homePage/home.html', {}, context)
+
+def renderAbout(request):
+        #get general context
+	context = RequestContext(request)
+	return render_to_response('homePage/about.html', {}, context)
