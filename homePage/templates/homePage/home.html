@@ -75,11 +75,11 @@
   <!-- { % for user in superusers|slice:":3" %} -->
     <div class="col-lg-4">
 		<!--{ {user.img}}-->
-      <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+		<div class="round-img"><img src="{% static "Samdaria.jpg" %}" alt="Generic placeholder image"></div>
 	  <!-- { {user.name}} -->
 	  <h2>Abhishek</h2>
 	  <!-- { {user.bio}} -->
-      <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+      <p>Abhishek Samdaria is a third year Computer Science student at Macaulay Honors College at the City College of New York campus. He is interested in a multitude of fields including: tech startups, quant analysis, fintech, and so on. Fun Fact: He is also working on developing his own startup company.</p>
 	  <!-- href={url renderUserProfile} -->
 	  <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
@@ -93,15 +93,15 @@
 
 
     <div class="col-lg-4">
-      <img class="img-circle" src="{% static "Melshaabiny.jpg" %}" alt="Generic placeholder image" width="140" height="140">
+		<div class="round-img"><img src="{% static "Melshaabiny.jpg" %}" alt="Generic placeholder image"></div>
       <h2>Moustafa</h2>
       <p>Moustafa Elshaabiny is a senior Computer Science student at the City College of New York. He identifies himself as a software engineer for social good, and is interested in the intersection of Data Science and Public Service.</p>
       <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
 
 	<div class="col-lg-4">
-      <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-      <h2>Jean</h2>
+  	<div class="round-img"><img src="{% static "Pena.jpg" %}" alt="Generic placeholder image"></div>
+		<h2>Jean</h2>
       <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
       <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
     </div><!-- /.col-lg-4 -->

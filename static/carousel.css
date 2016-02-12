@@ -513,6 +513,18 @@ body {
   letter-spacing: -1px;
 }
 
+.round-img{
+	margin: 0 auto;
+	width:280px;
+	height:280px;
+	border-radius:50%;
+	overflow: hidden;
+}
+.round-img img{
+	width:220px;
+}
+
+
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
@@ -530,6 +542,8 @@ body {
     padding-right: 0;
     padding-left: 0;
   }
+
+
 
   /* The navbar becomes detached from the top, so we round the corners */
   .navbar-wrapper .navbar {
